@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Receipts API | Verify the merchant. Verify the claim. Get a dated receipt.</title>
+<meta name="description" content="The Receipts API checks a merchant and its claims against free public sources (GLEIF, RDAP, Certificate Transparency) and returns a dated, sourced attestation for agentic commerce. Not a guarantee.">
+
+<!-- ================= JSON-LD: Organization + Service/Offer + FAQPage ================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://thereceiptsapi.com/#organization",
+      "name": "The Receipts API",
+      "legalName": "The Receipts API, a Carter Enterprise LLC company",
+      "url": "https://thereceiptsapi.com/",
+      "description": "The Receipts API verifies the merchant and the claim behind an AI agent's recommendation or transaction, and returns a dated, source-backed attestation. Real numbers. No hype. Receipts.",
+      "slogan": "Real numbers. No hype. Receipts.",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Carter Enterprise LLC"
+      },
+      "knowsAbout": [
+        "merchant verification",
+        "know your business",
+        "agentic commerce",
+        "AI agent checkout",
+        "claim verification",
+        "schema.org ClaimReview",
+        "W3C Verifiable Credentials"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://thereceiptsapi.com/#service",
+      "name": "Know Your Merchant Verification",
+      "provider": { "@id": "https://thereceiptsapi.com/#organization" },
+      "serviceType": "Merchant and claim verification for agentic commerce",
+      "areaServed": "Worldwide",
+      "description": "Dated, source-backed attestations that a merchant, business, or claim checks out against primary public sources, issued as schema.org JSON-LD and available as a W3C Verifiable Credential.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "The Receipts API pricing",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Know Your Merchant check (public, free)",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free client-side check against GLEIF, RDAP, and Certificate Transparency logs."
+          },
+          {
+            "@type": "AggregateOffer",
+            "name": "Claim-check API",
+            "lowPrice": "0.30",
+            "highPrice": "2.00",
+            "priceCurrency": "USD",
+            "description": "Per-call API for verifying a merchant or claim at transaction time, priced per check."
+          },
+          {
+            "@type": "Offer",
+            "name": "AI-trustable merchant badge",
+            "priceCurrency": "USD",
+            "description": "Monthly subscription for merchants to maintain a current, re-checked verification badge. Priced by volume, contact for a quote."
+          },
+          {
+            "@type": "Offer",
+            "name": "Enterprise",
+            "priceCurrency": "USD",
+            "description": "Custom volume claim-checks, SLAs, and integration support for platforms and agent builders."
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://thereceiptsapi.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does The Receipts API actually verify?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It checks a named merchant or business against free, primary public sources, a global legal entity registry (GLEIF), domain registration records (RDAP), and Certificate Transparency logs, then returns what those sources say, dated and linked. It does not verify agents, buyers, or payments, those are already covered by protocols like AP2 and ACP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this a trust score or a guarantee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The Receipts API never issues a numeric trust score and never guarantees a merchant or claim is legitimate. It reports only what named public sources returned, as of a specific date, with a link back to each source."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why isn't merchant verification already handled by agent checkout protocols?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Google's AP2 specification explicitly leaves merchant and claim verification open for the ecosystem to build. OpenAI and Stripe's Agentic Commerce Protocol relies on merchant-provided feeds. Coinbase's x402 does not address seller verification. That gap is what The Receipts API fills."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What format is a Receipts API attestation issued in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As schema.org JSON-LD (ClaimReview) that an agent or crawler can read directly, and optionally as a W3C Verifiable Credential (VC 2.0) for systems that need a signed, portable credential."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this legal or financial advice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The Receipts API is an educational and informational verification tool. It is not legal, financial, or investment advice, and it does not guarantee rankings, revenue, or outcomes for any merchant."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --navy:#0A1A2F;
+    --navy-2:#0F2338;
+    --navy-3:#132A44;
+    --gold:#D4AF37;
+    --gold-dim:#8f7726;
+    --off-white:#F3EFE6;
+    --off-white-dim:#C9CAD1;
+    --line:rgba(212,175,55,0.25);
+    --ok:#8fd19e;
+    --warn:#e8c15a;
+    --bad:#e0917a;
+    --radius:10px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--navy);
+    color:var(--off-white);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--gold);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  img,svg{max-width:100%;}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:40;
+    background:rgba(10,26,47,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  header.site .bar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 0;gap:16px;flex-wrap:wrap;
+  }
+  .wordmark{
+    /* <!-- LOCKED MARK PLACEHOLDER: replace this typographic wordmark with the locked emblem/lockup when finalized --> */
+    font-weight:800;
+    letter-spacing:0.11em;
+    font-size:16px;
+    color:var(--off-white);
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .wordmark span{color:var(--gold);}
+  nav.primary{display:flex;gap:22px;flex-wrap:wrap;}
+  nav.primary a{
+    color:var(--off-white-dim);
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-weight:600;
+  }
+  nav.primary a:hover{color:var(--gold);text-decoration:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:76px 0 56px;border-bottom:1px solid var(--line);position:relative;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;
+    border:1px solid var(--line);border-radius:999px;
+    padding:6px 14px;margin-bottom:22px;
+  }
+  h1.hero-head{
+    font-size:clamp(30px,5vw,52px);
+    line-height:1.12;
+    margin:0 0 20px;
+    max-width:920px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  h1.hero-head em{
+    font-style:normal;color:var(--gold);
+  }
+  .hero-sub{
+    font-size:clamp(16px,2.1vw,19px);
+    color:var(--off-white-dim);
+    max-width:680px;
+    margin:0 0 30px;
+  }
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:13px 24px;border-radius:8px;
+    font-weight:700;font-size:14px;letter-spacing:0.02em;
+    border:1px solid transparent;cursor:pointer;
+  }
+  .btn-gold{background:var(--gold);color:var(--navy);}
+  .btn-gold:hover{background:#e2c15c;text-decoration:none;}
+  .btn-outline{background:transparent;color:var(--off-white);border-color:var(--line);}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);text-decoration:none;}
+  .gap-line{
+    margin-top:44px;padding-top:30px;border-top:1px dashed var(--line);
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  }
+  .gap-line .cell{font-size:13px;color:var(--off-white-dim);}
+  .gap-line .cell b{display:block;color:var(--off-white);font-size:14px;margin-bottom:4px;}
+  .gap-line .cell.miss{color:var(--bad);}
+  .gap-line .cell.miss b{color:var(--bad);}
+  @media(max-width:760px){.gap-line{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- Section shells ---------- */
+  section{padding:64px 0;border-bottom:1px solid var(--line);}
+  .section-head{max-width:720px;margin-bottom:38px;}
+  .section-tag{
+    font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;margin-bottom:10px;
+  }
+  h2{font-size:clamp(24px,3.4vw,34px);margin:0 0 12px;font-weight:800;letter-spacing:-0.01em;}
+  .section-sub{color:var(--off-white-dim);font-size:15.5px;}
+
+  /* ---------- Proof / receipts ---------- */
+  .receipt-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  }
+  @media(max-width:900px){.receipt-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:620px){.receipt-grid{grid-template-columns:1fr;}}
+  .receipt{
+    background:var(--navy-2);
+    border:1px dashed var(--line);
+    border-radius:6px;
+    padding:20px;
+    font-family:"Courier New",Courier,monospace;
+    position:relative;
+  }
+  .receipt::before{
+    content:"RECEIPT";
+    display:block;
+    font-size:10px;letter-spacing:0.2em;color:var(--gold-dim);
+    margin-bottom:10px;
+  }
+  .receipt blockquote{
+    margin:0 0 14px;padding:0;
+    font-size:14.5px;line-height:1.5;color:var(--off-white);
+    border-left:2px solid var(--gold);padding-left:10px;
+  }
+  .receipt .src{
+    display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;
+    font-size:11.5px;color:var(--off-white-dim);
+    border-top:1px dashed var(--line);padding-top:10px;
+  }
+  .receipt .src a{color:var(--gold);}
+  .receipt .tag{
+    display:inline-block;margin-top:10px;font-size:10.5px;
+    letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--warn);
+  }
+
+  /* ---------- KYM tool ---------- */
+  .kym-panel{
+    background:var(--navy-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px;
+  }
+  .kym-form{
+    display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end;
+  }
+  @media(max-width:760px){.kym-form{grid-template-columns:1fr;}}
+  .field label{
+    display:block;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;
+    color:var(--off-white-dim);margin-bottom:6px;font-weight:600;
+  }
+  .field input{
+    width:100%;padding:12px 14px;border-radius:7px;
+    border:1px solid var(--line);background:var(--navy);color:var(--off-white);
+    font-size:15px;
+  }
+  .field input:focus{outline:none;border-color:var(--gold);}
+  .kym-form .btn{padding:13px 22px;height:47px;white-space:nowrap;}
+  .kym-hint{margin-top:12px;font-size:12.5px;color:var(--off-white-dim);}
+  .kym-status{margin-top:20px;min-height:1px;}
+  .loading-row{display:flex;align-items:center;gap:10px;color:var(--off-white-dim);font-size:14px;}
+  .spinner{
+    width:16px;height:16px;border-radius:50%;
+    border:2px solid var(--line);border-top-color:var(--gold);
+    animation:spin 0.8s linear infinite;flex:none;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .error-box{
+    margin-top:16px;padding:14px 16px;border-radius:7px;
+    background:rgba(224,145,122,0.1);border:1px solid rgba(224,145,122,0.4);
+    color:#f0b7a4;font-size:14px;
+  }
+
+  .result-card{
+    margin-top:26px;border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;background:var(--navy);
+  }
+  .result-head{
+    padding:18px 22px;background:var(--navy-3);
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;
+    border-bottom:1px solid var(--line);
+  }
+  .result-head h3{margin:0;font-size:16px;}
+  .result-head .qdate{font-size:12.5px;color:var(--off-white-dim);}
+  .signal{
+    padding:18px 22px;border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:170px 1fr;gap:16px;
+  }
+  @media(max-width:640px){.signal{grid-template-columns:1fr;}}
+  .signal:last-of-type{border-bottom:none;}
+  .signal .s-label{font-size:13px;color:var(--off-white-dim);font-weight:600;}
+  .signal .s-badge{
+    display:inline-block;margin-top:6px;font-size:10.5px;letter-spacing:0.08em;
+    text-transform:uppercase;padding:3px 8px;border-radius:4px;font-weight:700;
+  }
+  .badge-found{background:rgba(143,209,158,0.15);color:var(--ok);}
+  .badge-not_found{background:rgba(232,193,90,0.15);color:var(--warn);}
+  .badge-blocked{background:rgba(255,255,255,0.08);color:var(--off-white-dim);}
+  .badge-skipped{background:rgba(255,255,255,0.06);color:var(--off-white-dim);}
+  .s-value{font-size:15px;font-weight:700;margin-bottom:4px;}
+  .s-detail{font-size:13.5px;color:var(--off-white-dim);margin-bottom:8px;}
+  .s-source{font-size:12.5px;}
+  .s-source a{font-weight:600;}
+  .overall-line{
+    padding:16px 22px;font-size:13px;color:var(--off-white-dim);
+    background:var(--navy-3);border-top:1px solid var(--line);
+  }
+  .overall-line b{color:var(--off-white);}
+  .result-actions{
+    padding:16px 22px;display:flex;gap:12px;flex-wrap:wrap;
+    border-top:1px solid var(--line);
+  }
+  .copy-note{font-size:12px;color:var(--gold);align-self:center;display:none;}
+  .copy-note.show{display:inline;}
+
+  /* ---------- How it slots in ---------- */
+  .slot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:860px){.slot-grid{grid-template-columns:1fr;}}
+  .slot-card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;background:var(--navy-2);
+  }
+  .slot-card h4{margin:0 0 10px;font-size:15px;color:var(--gold);}
+  .slot-card p{margin:0;font-size:14px;color:var(--off-white-dim);}
+  .code-block{
+    margin-top:34px;background:var(--navy-2);border:1px solid var(--line);
+    border-radius:8px;padding:18px 20px;overflow-x:auto;
+    font-family:"Courier New",Courier,monospace;font-size:12.5px;color:var(--off-white-dim);
+    white-space:pre;
+  }
+
+  /* ---------- Pricing ---------- */
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  @media(max-width:980px){.price-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.price-grid{grid-template-columns:1fr;}}
+  .price-card{
+    border:1px solid var(--line);border-radius:var(--radius);padding:24px;
+    background:var(--navy-2);display:flex;flex-direction:column;
+  }
+  .price-card.featured{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset;}
+  .price-name{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);font-weight:700;margin-bottom:10px;}
+  .price-amount{font-size:26px;font-weight:800;margin-bottom:4px;}
+  .price-amount small{font-size:12.5px;font-weight:500;color:var(--off-white-dim);}
+  .price-note{font-size:12.5px;color:var(--off-white-dim);margin-bottom:16px;}
+  .price-list{list-style:none;margin:0 0 18px;padding:0;font-size:13.5px;color:var(--off-white-dim);flex:1;}
+  .price-list li{padding:6px 0;border-top:1px solid var(--line);}
+  .price-list li:first-child{border-top:none;}
+  .anchor-note{margin-top:26px;font-size:12.5px;color:var(--off-white-dim);border-top:1px dashed var(--line);padding-top:16px;}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{border-top:1px solid var(--line);padding:18px 0;}
+  .faq-item:last-child{border-bottom:1px solid var(--line);}
+  .faq-item h4{margin:0 0 8px;font-size:15.5px;}
+  .faq-item p{margin:0;color:var(--off-white-dim);font-size:14px;}
+
+  /* ---------- Footer ---------- */
+  footer{padding:52px 0 40px;}
+  .foot-grid{
+    display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;margin-bottom:36px;
+  }
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr;}}
+  .foot-word{font-weight:800;letter-spacing:0.1em;text-transform:uppercase;font-size:15px;margin-bottom:10px;}
+  .foot-word span{color:var(--gold);}
+  .foot-tag{font-size:13px;color:var(--off-white-dim);max-width:340px;}
+  .foot-col h5{font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin:0 0 12px;}
+  .foot-col ul{list-style:none;margin:0;padding:0;}
+  .foot-col li{margin-bottom:9px;font-size:13.5px;}
+  .foot-col a{color:var(--off-white-dim);}
+  .foot-col a:hover{color:var(--gold);}
+  .disclaimer{
+    border-top:1px solid var(--line);padding-top:24px;
+    font-size:12px;color:var(--off-white-dim);line-height:1.7;
+  }
+  .disclaimer p{margin:0 0 10px;}
+  .fine{margin-top:14px;font-size:11.5px;color:var(--off-white-dim);opacity:0.75;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap bar">
+    <!-- LOCKED MARK PLACEHOLDER: swap this typographic wordmark for the finalized emblem/lockup -->
+    <div class="wordmark">THE RECEIPTS <span>API</span></div>
+    <nav class="primary">
+      <a href="#proof">The Gap</a>
+      <a href="#check">Know Your Merchant</a>
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">A Carter Enterprise LLC company</div>
+      <h1 class="hero-head">
+        In agentic commerce, everyone verifies the agent, the buyer, and the payment.
+        <em>Nobody verifies the merchant, or the claim.</em>
+      </h1>
+      <p class="hero-sub">
+        The Receipts API checks the business behind the transaction and the claim behind the recommendation,
+        against primary public sources, and returns a dated attestation before your agent buys or recommends anything.
+        Verified as of a date, per a named source. Not a guarantee.
+      </p>
+      <div class="hero-cta">
+        <a href="#check" class="btn btn-gold">Run a free Know Your Merchant check</a>
+        <a href="#how" class="btn btn-outline">See how it slots into checkout</a>
+      </div>
+
+      <div class="gap-line">
+        <div class="cell"><b>Agent identity</b>covered by agent frameworks and platform auth</div>
+        <div class="cell"><b>Buyer identity</b>covered by KYC and identity providers</div>
+        <div class="cell"><b>Payment</b>covered by card networks, PSPs, and rails</div>
+        <div class="cell miss"><b>Merchant + claim</b>left open. This is what we check.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROOF IN THEIR WORDS ================= -->
+  <section id="proof">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">Proof, in their words</div>
+        <h2>The gap is not a theory. The people building these rails say so directly.</h2>
+        <p class="section-sub">
+          Each card below is a receipt: a direct quote or reported finding, with a name and a date attached.
+          No paraphrasing dressed up as a quote.
+        </p>
+      </div>
+
+      <div class="receipt-grid">
+
+        <div class="receipt">
+          <blockquote>"...leaves these areas open for the ecosystem to innovate."</blockquote>
+          <div class="src"><span>Google, AP2 protocol spec</span><a href="https://ap2-protocol.org" target="_blank" rel="noopener">ap2-protocol.org</a></div>
+          <span class="tag">On merchant and trust verification</span>
+        </div>
+
+        <div class="receipt">
+          <blockquote>"...relies on merchant-provided feeds."</blockquote>
+          <div class="src"><span>OpenAI / Stripe, Agentic Commerce Protocol</span><a href="https://github.com/agentic-commerce-protocol" target="_blank" rel="noopener">GitHub</a></div>
+          <span class="tag">Product data is self-reported, not checked</span>
+        </div>
+
+        <div class="receipt">
+          <blockquote>No discussion of seller verification in the protocol design.</blockquote>
+          <div class="src"><span>Coinbase, x402 protocol</span><a href="https://www.coinbase.com" target="_blank" rel="noopener">coinbase.com</a></div>
+          <span class="tag">Payment rail, not a seller check</span>
+        </div>
+
+        <div class="receipt">
+          <blockquote>New FTC policy statement on AI-generated inaccuracy takes effect July 1, 2026.</blockquote>
+          <div class="src"><span>Federal Trade Commission</span><a href="https://www.ftc.gov" target="_blank" rel="noopener">ftc.gov</a></div>
+          <span class="tag">Regulatory exposure for unchecked claims</span>
+        </div>
+
+        <div class="receipt">
+          <blockquote>AI answers gave an incorrect business phone number in roughly 36% of cases tested.</blockquote>
+          <div class="src"><span>Seer Interactive, study</span><a href="https://www.seerinteractive.com" target="_blank" rel="noopener">seerinteractive.com</a></div>
+          <span class="tag">Basic facts, unverified at the source</span>
+        </div>
+
+        <div class="receipt">
+          <blockquote>Reporting on scammers seeding fake support numbers that AI assistants then repeat as fact.</blockquote>
+          <div class="src"><span>Gizmodo, Dec 10, 2025</span><a href="https://gizmodo.com" target="_blank" rel="noopener">gizmodo.com</a></div>
+          <span class="tag">The failure mode, documented</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KNOW YOUR MERCHANT TOOL ================= -->
+  <section id="check">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">Free tool</div>
+        <h2>The Know Your Merchant check</h2>
+        <p class="section-sub">
+          Enter a business name, a domain, or both. This runs live, in your browser, against free public sources.
+          If a source blocks browser queries, we tell you that plainly and hand you the link to check by hand.
+          We never fake a result.
+        </p>
+      </div>
+
+      <div class="kym-panel">
+        <form class="kym-form" id="kymForm" novalidate>
+          <div class="field">
+            <label for="bizName">Business or merchant name</label>
+            <input type="text" id="bizName" placeholder="e.g. Acme Supply Co." autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="bizDomain">Domain</label>
+            <input type="text" id="bizDomain" placeholder="e.g. acmesupply.com" autocomplete="off">
+          </div>
+          <button type="submit" class="btn btn-gold" id="kymSubmit">Check it</button>
+        </form>
+        <div class="kym-hint">
+          At least one field is required. We check a global legal entity registry (GLEIF), domain registration
+          records (RDAP), and public Certificate Transparency logs. All three are free and public.
+        </div>
+
+        <div class="kym-status" id="kymStatus"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT SLOTS IN ================= -->
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">How it slots in</div>
+        <h2>One layer, built for the gap the rails left open</h2>
+        <p class="section-sub">
+          The Receipts API is not a checkout rail and does not compete with one. It produces a portable,
+          machine-readable signal that a checkout rail, an agent, or a crawler can read alongside its own checks.
+        </p>
+      </div>
+
+      <div class="slot-grid">
+        <div class="slot-card">
+          <h4>Emitted as schema.org JSON-LD</h4>
+          <p>Every check returns a ClaimReview-style JSON-LD object: what was checked, what the source said,
+          and when. Any crawler or agent that reads structured data can consume it directly.</p>
+        </div>
+        <div class="slot-card">
+          <h4>Designed to sit alongside AP2 / ACP</h4>
+          <p>Google's AP2 and the OpenAI/Stripe Agentic Commerce Protocol both leave merchant and claim
+          verification open by design. A Receipts API attestation is meant to travel with a checkout payload
+          as an added signal, not to replace either protocol.</p>
+        </div>
+        <div class="slot-card">
+          <h4>Issuable as a W3C Verifiable Credential</h4>
+          <p>For systems that need a signed, portable credential rather than a JSON-LD snippet, the same
+          attestation can be issued as a W3C Verifiable Credential (VC 2.0), tied to the date it was checked.</p>
+        </div>
+      </div>
+
+      <div class="code-block">{
+  "@context": "https://schema.org",
+  "@type": "ClaimReview",
+  "datePublished": "2026-07-25",
+  "author": { "@type": "Organization", "name": "The Receipts API" },
+  "claimReviewed": "Public registration and domain signals for \"Acme Supply Co.\" as of 2026-07-25.",
+  "itemReviewed": { "@type": "Organization", "name": "Acme Supply Co." },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "Signals reported, not a score. See detail.",
+    "alternateName": "No trust score is issued."
+  }
+}</div>
+    </div>
+  </section>
+
+  <!-- ================= PRICING ================= -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">Pricing</div>
+        <h2>An honest ladder, no guarantees attached</h2>
+        <p class="section-sub">
+          Pricing is anchored to the existing Know Your Business (KYB) market, not invented from scratch.
+          No tier here promises a ranking boost, a sales lift, or any other outcome.
+        </p>
+      </div>
+
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-name">Know Your Merchant</div>
+          <div class="price-amount">Free</div>
+          <div class="price-note">The public tool on this page</div>
+          <ul class="price-list">
+            <li>GLEIF, RDAP, and CT lookups</li>
+            <li>Dated result card</li>
+            <li>Copyable receipt (JSON-LD + text)</li>
+            <li>Rate limited, no login</li>
+          </ul>
+        </div>
+
+        <div class="price-card featured">
+          <div class="price-name">Claim-check API</div>
+          <div class="price-amount">$0.30 <small>&ndash; $2.00 / call</small></div>
+          <div class="price-note">For agents and platforms verifying at transaction time</div>
+          <ul class="price-list">
+            <li>Merchant and claim checks, on demand</li>
+            <li>JSON-LD and VC 2.0 output</li>
+            <li>Priced by source depth and freshness</li>
+            <li>Volume tiers available</li>
+          </ul>
+        </div>
+
+        <div class="price-card">
+          <div class="price-name">AI-Trustable Badge</div>
+          <div class="price-amount">Monthly</div>
+          <div class="price-note">For merchants who want a standing, re-checked badge</div>
+          <ul class="price-list">
+            <li>Recurring re-verification</li>
+            <li>Badge markup for merchant sites</li>
+            <li>Priced by merchant volume, contact for a quote</li>
+            <li>No ranking or placement promises</li>
+          </ul>
+        </div>
+
+        <div class="price-card">
+          <div class="price-name">Enterprise</div>
+          <div class="price-amount">Custom</div>
+          <div class="price-note">For platforms, marketplaces, and agent builders</div>
+          <ul class="price-list">
+            <li>Volume claim-checks</li>
+            <li>SLA and dedicated support</li>
+            <li>Custom source integrations</li>
+            <li>Contact us to scope</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="anchor-note">
+        Anchoring, for reference: Stripe Identity verification runs around $1.50 per verification;
+        Sumsub's published KYB range runs roughly $1.35 to $1.85 per check. The Receipts API's claim-check
+        pricing is set relative to that existing market, not to a target margin. No tier guarantees rankings,
+        revenue, or any other business outcome.
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">FAQ</div>
+        <h2>Plain answers</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h4>What does The Receipts API actually verify?</h4>
+          <p>It checks a named merchant or business against free, primary public sources, a global legal entity
+          registry (GLEIF), domain registration records (RDAP), and Certificate Transparency logs, then reports
+          what those sources say, dated and linked. It does not verify agents, buyers, or payments, those are
+          already covered elsewhere.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Is this a trust score or a guarantee?</h4>
+          <p>No. We never issue a numeric trust score and never guarantee a merchant or claim is legitimate.
+          We report only what named public sources returned, as of a specific date, with a link back to each one.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Why isn't this already handled by agent checkout protocols?</h4>
+          <p>Google's AP2 spec leaves merchant and claim verification open for the ecosystem. The OpenAI/Stripe
+          Agentic Commerce Protocol relies on merchant-provided feeds. Coinbase's x402 does not address seller
+          verification. That is the gap this fills.</p>
+        </div>
+        <div class="faq-item">
+          <h4>What format is an attestation issued in?</h4>
+          <p>As schema.org JSON-LD (ClaimReview) that an agent or crawler can read directly, and optionally as
+          a W3C Verifiable Credential (VC 2.0) for systems that need a signed, portable credential.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Is this legal or financial advice?</h4>
+          <p>No. This is an educational and informational verification tool. It is not legal, financial, or
+          investment advice, and it does not guarantee rankings, revenue, or outcomes for any merchant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-word">THE RECEIPTS <span>API</span></div>
+        <div class="foot-tag">Real numbers. No hype. Receipts. A verification layer for agentic commerce, built by Carter Enterprise LLC.</div>
+      </div>
+      <div class="foot-col">
+        <h5>Sister products</h5>
+        <ul>
+          <li><a href="#" title="Carter Enterprise LLC">Trunkline</a></li>
+          <li><a href="#" title="Carter Enterprise LLC">Namebeam</a></li>
+          <li><a href="#" title="Carter Enterprise LLC">The Receipts Index</a></li>
+          <li><a href="#" title="Carter Enterprise LLC">The Filing Room</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>This page</h5>
+        <ul>
+          <li><a href="#proof">The gap</a></li>
+          <li><a href="#check">Know Your Merchant</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <p>
+        The Receipts API is an educational and informational tool. It is not legal, financial, or investment
+        advice, and using it does not create any advisory relationship. Verification results reflect only what
+        the named third-party public sources (GLEIF, RDAP registries, and Certificate Transparency logs)
+        returned at the time of the check, and are provided "as is," with no guarantee of accuracy, completeness,
+        or currency. A missing or unmatched result does not by itself mean a business is illegitimate, and a
+        matched result is not a guarantee of legitimacy, safety, or trustworthiness. Source data is controlled
+        by third parties outside our control and may change or be temporarily unavailable, including due to
+        browser CORS restrictions, which this tool discloses rather than working around. No tier of service
+        guarantees rankings, revenue, or any other business outcome. Independently verify anything material
+        before you rely on it.
+      </p>
+      <div class="fine">&copy; <span id="yearNow"></span> The Receipts API, a Carter Enterprise LLC company. All trademarks belong to their respective owners.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  document.getElementById("yearNow").textContent = new Date().getFullYear();
+
+  // ---------- helpers ----------
+  function todayISO(){ return new Date().toISOString().slice(0,10); }
+  function todayHuman(){
+    return new Date().toLocaleDateString(undefined, { year:"numeric", month:"long", day:"numeric" });
+  }
+
+  function normalizeDomain(input){
+    if(!input) return "";
+    var d = input.trim().toLowerCase();
+    d = d.replace(/^https?:\/\//, "");
+    d = d.replace(/^www\./, "");
+    d = d.split("/")[0];
+    d = d.split("?")[0];
+    d = d.split("#")[0];
+    return d;
+  }
+
+  function escapeHtml(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+    });
+  }
+
+  async function fetchWithTimeout(url, options, timeoutMs){
+    var controller = new AbortController();
+    var timer = setTimeout(function(){ controller.abort(); }, timeoutMs || 7000);
+    try{
+      var opts = Object.assign({}, options || {}, { signal: controller.signal });
+      var res = await fetch(url, opts);
+      clearTimeout(timer);
+      return res;
+    } catch(err){
+      clearTimeout(timer);
+      throw err;
+    }
+  }
+
+  // ---------- individual source checks (never reject, always resolve to a result object) ----------
+
+  async function checkGleif(name){
+    var dateChecked = todayISO();
+    var searchUrl = "https://search.gleif.org/#/search?q=" + encodeURIComponent(name || "");
+    if(!name){
+      return { key:"gleif", label:"Legal entity (GLEIF LEI)", status:"skipped",
+        detail:"No business name entered, so the global Legal Entity Identifier registry was not queried.",
+        sourceName:"GLEIF LEI Search", sourceUrl:"https://search.gleif.org/", dateChecked:dateChecked };
+    }
+    var apiUrl = "https://api.gleif.org/api/v1/lei-records?filter%5Bfulltext%5D=" + encodeURIComponent(name) + "&page%5Bsize%5D=5";
+    try{
+      var res = await fetchWithTimeout(apiUrl, { headers: { "Accept":"application/vnd.api+json" } }, 7000);
+      if(!res.ok) throw new Error("status " + res.status);
+      var json = await res.json();
+      var records = (json && json.data) || [];
+      if(records.length === 0){
+        return { key:"gleif", label:"Legal entity (GLEIF LEI)", status:"not_found",
+          value:"No LEI record matched",
+          detail:"No match in GLEIF's public Legal Entity Identifier database for this name. Many small or unlisted businesses do not carry an LEI, so this alone is not evidence of anything.",
+          sourceName:"GLEIF LEI Search", sourceUrl:searchUrl, dateChecked:dateChecked };
+      }
+      var rec = records[0];
+      var attr = rec.attributes || {};
+      var legalName = attr.entity && attr.entity.legalName && attr.entity.legalName.name;
+      var lei = attr.lei;
+      var status = attr.entity && attr.entity.status;
+      var regStatus = attr.registration && attr.registration.status;
+      var country = attr.entity && attr.entity.legalAddress && attr.entity.legalAddress.country;
+      return {
+        key:"gleif", label:"Legal entity (GLEIF LEI)", status:"found",
+        value: legalName || name,
+        detail: "LEI " + (lei || "unknown") + ". Entity status: " + (status || "unknown") + ". Registration status: " + (regStatus || "unknown") + "." + (country ? " Jurisdiction: " + country + "." : ""),
+        sourceName:"GLEIF LEI Record",
+        sourceUrl: lei ? ("https://search.gleif.org/#/record/" + lei) : searchUrl,
+        dateChecked:dateChecked
+      };
+    } catch(err){
+      return { key:"gleif", label:"Legal entity (GLEIF LEI)", status:"blocked",
+        detail:"This browser could not complete the live GLEIF query, most likely a network issue or a CORS restriction on this connection. Open the source to check by hand.",
+        sourceName:"GLEIF LEI Search", sourceUrl:searchUrl, dateChecked:dateChecked };
+    }
+  }
+
+  async function checkRdap(domain){
+    var dateChecked = todayISO();
+    var humanUrl = "https://lookup.icann.org/en/lookup?name=" + encodeURIComponent(domain || "");
+    if(!domain){
+      return { key:"rdap", label:"Domain registration (RDAP)", status:"skipped",
+        detail:"No domain entered, so registration records were not queried.",
+        sourceName:"ICANN RDAP Lookup", sourceUrl:"https://lookup.icann.org/", dateChecked:dateChecked };
+    }
+    var apiUrl = "https://rdap.org/domain/" + encodeURIComponent(domain);
+    try{
+      var res = await fetchWithTimeout(apiUrl, { headers: { "Accept":"application/rdap+json" } }, 8000);
+      if(!res.ok) throw new Error("status " + res.status);
+      var json = await res.json();
+      var events = json.events || [];
+      var regEvent = events.filter(function(e){ return e.eventAction === "registration"; })[0];
+      var createdDate = regEvent ? regEvent.eventDate : null;
+      var statuses = (json.status || []).join(", ");
+      var ageStr = "";
+      if(createdDate){
+        var created = new Date(createdDate);
+        var days = Math.floor((Date.now() - created.getTime()) / 86400000);
+        var years = (days / 365.25).toFixed(1);
+        ageStr = years + " years old (registered " + createdDate.slice(0,10) + "). ";
+      }
+      return {
+        key:"rdap", label:"Domain registration (RDAP)", status: createdDate ? "found" : "not_found",
+        value: createdDate ? createdDate.slice(0,10) : "No registration date returned",
+        detail: ageStr + "Status: " + (statuses || "unknown") + ".",
+        sourceName:"RDAP (rdap.org)", sourceUrl: apiUrl, dateChecked:dateChecked
+      };
+    } catch(err){
+      return { key:"rdap", label:"Domain registration (RDAP)", status:"blocked",
+        detail:"This browser could not complete the live RDAP query, most likely a network issue or a CORS restriction on this connection. Open the source to check by hand.",
+        sourceName:"ICANN RDAP Lookup", sourceUrl:humanUrl, dateChecked:dateChecked };
+    }
+  }
+
+  async function checkCrtSh(domain){
+    var dateChecked = todayISO();
+    var humanUrl = "https://crt.sh/?q=" + encodeURIComponent(domain || "");
+    if(!domain){
+      return { key:"crtsh", label:"Certificate transparency (crt.sh)", status:"skipped",
+        detail:"No domain entered, so Certificate Transparency logs were not queried.",
+        sourceName:"crt.sh", sourceUrl:"https://crt.sh/", dateChecked:dateChecked };
+    }
+    var apiUrl = "https://crt.sh/?q=" + encodeURIComponent(domain) + "&output=json";
+    try{
+      var res = await fetchWithTimeout(apiUrl, {}, 9000);
+      if(!res.ok) throw new Error("status " + res.status);
+      var json = await res.json();
+      if(!Array.isArray(json) || json.length === 0){
+        return { key:"crtsh", label:"Certificate transparency (crt.sh)", status:"not_found",
+          value:"No certificates logged",
+          detail:"No public certificates found in Certificate Transparency logs for this domain.",
+          sourceName:"crt.sh", sourceUrl:humanUrl, dateChecked:dateChecked };
+      }
+      var dates = json.map(function(c){ return new Date(c.not_before); }).filter(function(d){ return !isNaN(d); });
+      var earliest = new Date(Math.min.apply(null, dates));
+      return {
+        key:"crtsh", label:"Certificate transparency (crt.sh)", status:"found",
+        value: earliest.toISOString().slice(0,10),
+        detail: "Earliest logged certificate: " + earliest.toISOString().slice(0,10) + ". " + json.length + " certificate log entries found.",
+        sourceName:"crt.sh", sourceUrl:humanUrl, dateChecked:dateChecked
+      };
+    } catch(err){
+      return { key:"crtsh", label:"Certificate transparency (crt.sh)", status:"blocked",
+        detail:"crt.sh does not allow this kind of live browser query from here (CORS restriction), or the request timed out. Open the source to check by hand.",
+        sourceName:"crt.sh", sourceUrl:humanUrl, dateChecked:dateChecked };
+    }
+  }
+
+  // ---------- receipt builders ----------
+
+  function buildClaimReviewJsonLd(query, results){
+    var claimText = 'Public registration and domain signals for "' + query + '" as of ' + todayISO() + ".";
+    return {
+      "@context": "https://schema.org",
+      "@type": "ClaimReview",
+      "datePublished": todayISO(),
+      "url": (typeof location !== "undefined" ? location.href : ""),
+      "author": { "@type": "Organization", "name": "The Receipts API" },
+      "claimReviewed": claimText,
+      "itemReviewed": { "@type": "Organization", "name": query },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "Signals reported, not a score. See reviewBody for detail.",
+        "alternateName": "No trust score is issued."
+      },
+      "reviewBody": results.map(function(r){
+        return r.label + ": " + r.status.toUpperCase() + (r.value ? " - " + r.value : "") +
+          " (source: " + r.sourceName + ", checked " + r.dateChecked + ")";
+      }).join(" | ")
+    };
+  }
+
+  function buildPlainReceipt(query, results){
+    var lines = [];
+    lines.push("THE RECEIPTS API");
+    lines.push("Know Your Merchant Receipt");
+    lines.push("------------------------------");
+    lines.push("Subject: " + query);
+    lines.push("Date: " + todayISO());
+    lines.push("");
+    results.forEach(function(r){
+      lines.push(r.label + ": " + r.status.toUpperCase());
+      if(r.value) lines.push("  Value: " + r.value);
+      if(r.detail) lines.push("  Detail: " + r.detail);
+      lines.push("  Source: " + r.sourceName + " (" + r.sourceUrl + ")");
+      lines.push("  Checked: " + r.dateChecked);
+      lines.push("");
+    });
+    lines.push("Verified as of " + todayISO() + ", per the sources above where available. Not a guarantee.");
+    lines.push("Issued by The Receipts API, a Carter Enterprise LLC company.");
+    return lines.join("\n");
+  }
+
+  async function copyText(text){
+    try{
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch(e){
+      try{
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        return ok;
+      } catch(e2){
+        return false;
+      }
+    }
+  }
+
+  // ---------- rendering ----------
+
+  var statusLabel = { found:"Found", not_found:"Not found", blocked:"Open the source", skipped:"Skipped" };
+
+  function renderSignal(r){
+    var badgeClass = "badge-" + r.status;
+    var valueHtml = r.value ? '<div class="s-value">' + escapeHtml(r.value) + "</div>" : "";
+    var detailHtml = r.detail ? '<div class="s-detail">' + escapeHtml(r.detail) + "</div>" : "";
+    var sourceLabel = (r.status === "blocked") ? "Open the source to verify manually" : "Source";
+    return (
+      '<div class="signal">' +
+        '<div><div class="s-label">' + escapeHtml(r.label) + '</div>' +
+          '<span class="s-badge ' + badgeClass + '">' + statusLabel[r.status] + '</span></div>' +
+        '<div>' + valueHtml + detailHtml +
+          '<div class="s-source">' + sourceLabel + ': <a href="' + r.sourceUrl + '" target="_blank" rel="noopener">' + escapeHtml(r.sourceName) + '</a>' +
+          ' &middot; checked ' + r.dateChecked + '</div>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  function renderResult(query, results){
+    var signalsHtml = results.map(renderSignal).join("");
+    var html =
+      '<div class="result-card">' +
+        '<div class="result-head"><h3>' + escapeHtml(query) + '</h3><div class="qdate">Checked ' + todayHuman() + '</div></div>' +
+        signalsHtml +
+        '<div class="overall-line"><b>Verified as of ' + todayHuman() + '</b>, per the sources above where available. This is not a guarantee of legitimacy, accuracy, or trustworthiness.</div>' +
+        '<div class="result-actions">' +
+          '<button class="btn btn-outline" id="copyReceiptBtn" type="button">Copy receipt</button>' +
+          '<span class="copy-note" id="copyNote">Copied: plain-text receipt + JSON-LD.</span>' +
+        '</div>' +
+      '</div>';
+
+    var statusEl = document.getElementById("kymStatus");
+    statusEl.innerHTML = html;
+
+    var copyBtn = document.getElementById("copyReceiptBtn");
+    var copyNote = document.getElementById("copyNote");
+    copyBtn.addEventListener("click", async function(){
+      var jsonld = buildClaimReviewJsonLd(query, results);
+      var plain = buildPlainReceipt(query, results);
+      var combined = plain + "\n\n----- Structured data (schema.org ClaimReview) -----\n" + JSON.stringify(jsonld, null, 2);
+      var ok = await copyText(combined);
+      copyNote.textContent = ok ? "Copied: plain-text receipt + JSON-LD." : "Copy failed, select and copy the text manually.";
+      copyNote.classList.add("show");
+      setTimeout(function(){ copyNote.classList.remove("show"); }, 4000);
+    });
+  }
+
+  function renderLoading(){
+    document.getElementById("kymStatus").innerHTML =
+      '<div class="loading-row"><span class="spinner"></span> Checking GLEIF, RDAP, and Certificate Transparency logs live...</div>';
+  }
+
+  function renderError(message){
+    document.getElementById("kymStatus").innerHTML = '<div class="error-box">' + escapeHtml(message) + "</div>";
+  }
+
+  // ---------- form wiring ----------
+
+  var form = document.getElementById("kymForm");
+  var submitBtn = document.getElementById("kymSubmit");
+
+  form.addEventListener("submit", async function(ev){
+    ev.preventDefault();
+
+    var nameRaw = document.getElementById("bizName").value.trim();
+    var domainRaw = normalizeDomain(document.getElementById("bizDomain").value.trim());
+
+    if(!nameRaw && !domainRaw){
+      renderError("Enter a business name, a domain, or both, then check it.");
+      return;
+    }
+
+    var query = nameRaw && domainRaw ? (nameRaw + " (" + domainRaw + ")") : (nameRaw || domainRaw);
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Checking...";
+    renderLoading();
+
+    try{
+      var results = await Promise.all([
+        checkGleif(nameRaw),
+        checkRdap(domainRaw),
+        checkCrtSh(domainRaw)
+      ]);
+      renderResult(query, results);
+    } catch(err){
+      renderError("Something went wrong running the check in this browser. Try again, or open each source directly from the links in this page.");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Check it";
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
