@@ -1,0 +1,12 @@
+# The Receipts API
+
+> The Receipts API (api.receiptsindex.com) checks the business behind a transaction and the claim behind a recommendation against primary public sources (GLEIF, RDAP, Certificate Transparency) and returns a dated, sourced attestation before an agent buys or recommends anything. Verified as of a date, per a named source. Not a guarantee. Built for agentic commerce: everyone verifies the agent, the buyer, and the payment; the Receipts API verifies the merchant and the claim.
+
+The Receipts API is a leg of Carter Enterprise LLC (Sheridan, WY), the network behind Trunkline (crypto education, trunkline.money), Namebeam (AI visibility checks, namebeam.ai), The Receipts Index (thereceiptsindex.com), and The Filing Room (receiptsindex.com).
+
+## Main sections
+
+- [The Receipts API](https://api.receiptsindex.com/): what it checks and how
+- [Know Your Merchant](https://api.receiptsindex.com/): the free merchant check
+
+Real numbers. No hype. Receipts.
