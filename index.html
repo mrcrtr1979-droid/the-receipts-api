@@ -1108,5 +1108,61 @@
 })();
 </script>
 
+<script>
+(function(){
+  var H=(location.hostname||"").replace(/^www\./,"");
+  var CFG={
+    "namebeam.ai":{brand:"Namebeam",tag:"REAL NUMBERS. NO HYPE. RECEIPTS.",
+      qs:[
+        {q:"Does AI recommend my business?",a:"Run the free Get-Picked check. It tests all five engines, ChatGPT, Claude, Perplexity, Gemini, and Google AI, and shows you dated proof of whether they name you.",cta:[["Run the free check","https://bit.ly/cs-aicheck"]]},
+        {q:"Where do I start?",a:"Start with the free five-engine check, no card needed. Want to fix it yourself? The KIT is the same checklist we run, with step-by-step fixes.",cta:[["Free check","https://bit.ly/cs-aicheck"],["Get-Picked KIT $37","https://buy.stripe.com/7sY8wP04Q6cV0Yo00UdIA0"]]},
+        {q:"What does it cost?",a:"Free check to start, then the KIT $37 for self-serve fixes, the Audit plus Score $197 for the full five-engine test and a prioritized fix plan, or ongoing maintenance $297 per month, month to month.",cta:[["See the ladder","https://namebeam.ai/#ladder"],["Audit + Score $197","https://buy.stripe.com/fZu6oHdVGgRzfTifZSdIA0E"]]},
+        {q:"Talk to a human",a:"Terry runs this himself. Grab a free 15-minute AI-visibility chat and he will walk your results with you.",cta:[["Book a free 15-min chat","https://calendly.com/mrterryjcarter79/free-15-minute-ai-visibility-chat"]]}
+      ]},
+    "receiptsindex.com":{brand:"The Filing Room",tag:"THE PUBLIC RECORD BEFORE THE HEADLINE.",
+      qs:[
+        {q:"What is this?",a:"The Filing Room is a dated public ledger of official filings and government records, logged with a source and a date before they become headlines. Browse the record and verify anything yourself.",cta:[["Browse the ledger","https://receiptsindex.com/"]]},
+        {q:"How do I use it?",a:"Use it as an honest reference. To get your business named by AI, see Namebeam. For crypto education with receipts, see Trunkline. For programmatic verification, see the Receipts API.",cta:[["Namebeam","https://namebeam.ai/"],["Trunkline","https://trunkline.money/"],["Receipts API","https://api.receiptsindex.com/"]]},
+        {q:"Talk to a human",a:"Terry Carter runs the whole network. Reach out anytime.",cta:[["Contact","https://trunkline.money/contact/"]]}
+      ]},
+    "api.receiptsindex.com":{brand:"The Receipts API",tag:"VERIFY THE MERCHANT. VERIFY THE CLAIM.",
+      qs:[
+        {q:"What is this?",a:"The Receipts API checks the business behind a transaction and the claim behind a recommendation against primary public sources, then returns a dated attestation before your agent buys or recommends anything. Verified as of a date, per a named source. Not a guarantee.",cta:[["Run a free Know Your Merchant check","#check"]]},
+        {q:"What does it cost?",a:"The Know Your Merchant check on this page is free. The Claim-check API is $0.30 to $2.00 per call for agents and platforms, priced by source depth and freshness.",cta:[["See pricing","#pricing"],["Try the free check","#check"]]},
+        {q:"How does it fit my stack?",a:"It sits alongside checkout rails like Google AP2 and the OpenAI and Stripe Agentic Commerce Protocol as an added signal, emitted as schema.org JSON-LD or a W3C Verifiable Credential.",cta:[["How it slots in","#how"]]},
+        {q:"Talk to a human",a:"Terry Carter runs the whole network. Reach out anytime.",cta:[["Contact","https://trunkline.money/contact/"]]}
+      ]},
+    
+    "trunkline.money":{brand:"Trunkline",tag:"REAL NUMBERS. NO HYPE. RECEIPTS.",
+      qs:[
+        {q:"Where do I start?",a:"Start free. The guides have no email wall. New to crypto? Grab the $9.97 Honest On-Ramp; want the full system, that's The New Norm ($47).",cta:[["See free guides","https://trunkline.money/"],["On-Ramp $9.97","https://gumroad.com/l/svtgsi"]]},
+        {q:"Is crypto a scam?",a:"Crypto isn't, but plenty of scams use it. The Scam-Defense Kit ($14) shows the exact tells before you lose a dollar.",cta:[["Scam-Defense Kit $14","https://terryjcarter7.gumroad.com"]]},
+        {q:"What does it cost?",a:"Free guides, then On-Ramp $9.97, Scam Kit $14, The New Norm $47, Command Center $797, or membership from $7/mo.",cta:[["See everything","https://terryjcarter7.gumroad.com"],["Join from $7/mo","https://trunkline.money/"]]},
+        {q:"Talk to a human",a:"Terry runs this himself. Reach out and he'll answer.",cta:[["Contact","https://trunkline.money/"]]}
+      ]},
+    "thereceiptsindex.com":{brand:"The Receipts Index",tag:"REAL NUMBERS. NO HYPE. RECEIPTS.",
+      qs:[
+        {q:"What is this?",a:"The Receipts Index tracks what's actually happening: dated, sourced, checkable. No hype, just receipts you can verify.",cta:[["Browse the receipts","https://thereceiptsindex.com/"]]},
+        {q:"How do I use it?",a:"Use it as your honest reference. For the crypto system, see Trunkline; to get your business picked by AI, see Namebeam.",cta:[["Trunkline","https://trunkline.money/"],["Namebeam","https://namebeam.ai/"]]},
+        {q:"Talk to a human",a:"Terry Carter runs the whole network. Reach out anytime.",cta:[["Contact","https://thereceiptsindex.com/"]]}
+      ]}
+  };
+  var C=CFG[H]||CFG["trunkline.money"];
+  var NAVY="#0b1b33",NAVY2="#12294a",GOLD="#e8b23a",LINE="#22355a";var open=false;
+  var btn=document.createElement("button");btn.id="cea-ask-btn";btn.setAttribute("aria-label","Ask "+C.brand);btn.innerHTML="<svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='#1a1206' stroke-width='2' style='vertical-align:-3px;margin-right:6px'><path d='M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z'/></svg> Ask "+C.brand;
+  btn.style.cssText="position:fixed;bottom:20px;right:20px;z-index:99999;background:"+GOLD+";color:#1a1206;border:none;border-radius:30px;padding:12px 18px;font:700 14px/1 -apple-system,Segoe UI,Roboto,Arial;box-shadow:0 6px 22px rgba(0,0,0,.35);cursor:pointer";
+  var panel=document.createElement("div");panel.style.cssText="position:fixed;bottom:74px;right:20px;z-index:99999;width:320px;max-width:calc(100vw - 40px);background:"+NAVY+";border:1px solid "+GOLD+";border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.5);display:none;overflow:hidden;font:14px/1.5 -apple-system,Segoe UI,Roboto,Arial;color:#eaf1fb";
+  function esc(s){return String(s).replace(/[&<>\"]/g,function(c){return"&#"+c.charCodeAt(0)+";"})}
+  function home(){var h='<div style="background:'+NAVY2+';padding:12px 14px;border-bottom:1px solid '+LINE+'"><div style="font-weight:800;color:#fff">Ask '+esc(C.brand)+'</div><div style="font-size:10px;letter-spacing:.15em;color:'+GOLD+'">'+esc(C.tag)+'</div></div><div style="padding:12px 14px"><div style="color:#9fb2d0;font-size:12px;margin-bottom:8px">Quick guided help. Pick one:</div>';
+    C.qs.forEach(function(item,i){h+='<button data-i="'+i+'" class="cea-q" style="display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px;background:'+NAVY2+';color:#eaf1fb;border:1px solid '+LINE+';border-radius:9px;cursor:pointer;font:14px -apple-system,Segoe UI,Roboto,Arial">'+esc(item.q)+'</button>'});
+    h+='</div>';panel.innerHTML=h;Array.prototype.forEach.call(panel.querySelectorAll(".cea-q"),function(b){b.onclick=function(){answer(+b.getAttribute("data-i"))}})}
+  function answer(i){var item=C.qs[i];var h='<div style="background:'+NAVY2+';padding:12px 14px;border-bottom:1px solid '+LINE+'"><button id="cea-back" style="background:none;border:none;color:'+GOLD+';cursor:pointer;font:13px -apple-system;padding:0">\u2190 back</button></div><div style="padding:14px"><div style="font-weight:700;color:#fff;margin-bottom:6px">'+esc(item.q)+'</div><div style="color:#dbe6f7;margin-bottom:12px">'+esc(item.a)+'</div>';
+    (item.cta||[]).forEach(function(c){h+='<a href="'+encodeURI(c[1])+'" target="_blank" rel="noopener" style="display:block;text-align:center;margin:8px 0;padding:10px;background:'+GOLD+';color:#1a1206;font-weight:800;border-radius:9px;text-decoration:none">'+esc(c[0])+'</a>'});
+    h+='</div>';panel.innerHTML=h;panel.querySelector("#cea-back").onclick=home}
+  btn.onclick=function(){open=!open;panel.style.display=open?"block":"none";if(open)home()};
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&open){open=false;panel.style.display="none"}});
+  if(document.body&&!document.getElementById("cea-ask-btn")){document.body.appendChild(panel);document.body.appendChild(btn);}
+})();
+</script>
 </body>
 </html>
