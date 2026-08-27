@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "planetary_sensor_family",
+  "description": "14 independently-addressable raw sensor feeds (biosphere, HN attention, FX, geomagnetic Kp, gravitational waves, market sentiment, BTC pulse, rail fees, near-earth objects, network energy, off-world humans, planetary quakes, river flow, solar wind, space weather flares) that feed the world_state daily rollup.",
+  "url": "https://api.receiptsindex.com/datasets/planetary_sensor_family",
+  "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
+  "temporalCoverage": "2026-07-01/2026-08-19",
+  "dateModified": "2026-08-27",
+  "identifier": "sha256-of-hashes:18520bfaff07067e",
+  "hasPart": [
+    "biosphere.csv","collective_mind_hn.csv","fx_pulse.csv","geomagnetic_kp.csv","gravitational_waves.csv",
+    "market_sentiment.csv","money_pulse_btc.csv","money_rail_fee.csv","near_earth_objects.csv",
+    "network_energy.csv","offworld_humans.csv","planetary_quakes.csv","river_flow.csv","solar_wind.csv",
+    "space_weather_flares.csv"
+  ],
+  "distribution": { "@type": "DataDownload", "encodingFormat": "text/csv", "contentSize": "258334" },
+  "isAccessibleForFree": false,
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "rowCount", "value": 1731 },
+    { "@type": "PropertyValue", "name": "refreshCadence", "value": "feeds world_state daily -- same 8-day staleness" },
+    { "@type": "PropertyValue", "name": "monetizableAs", "value": "product / lease / machine-sale candidate" }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "citation_corpus",
+  "description": "Dated AI-answer-engine citation telemetry: what 5 engines (ChatGPT, Claude, Perplexity, Gemini, Google AI) cite on buyer-intent prompts, per business/niche/market, run by run.",
+  "url": "https://api.receiptsindex.com/datasets/citation_corpus",
+  "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
+  "temporalCoverage": "2026-07-29/2026-08-25",
+  "dateModified": "2026-08-27",
+  "identifier": "sha256:12f63e518333e7cb",
+  "variableMeasured": ["date_utc","check_id","business","niche","market","engine","prompt_variant","run","business_mentioned","competitors_named","sources_cited","run_channel","flags"],
+  "distribution": { "@type": "DataDownload", "encodingFormat": "text/csv", "contentSize": "129114" },
+  "isAccessibleForFree": false,
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "rowCount", "value": 127 },
+    { "@type": "PropertyValue", "name": "refreshCadence", "value": "weekly (Tue)" },
+    { "@type": "PropertyValue", "name": "monetizableAs", "value": "leg / lease / machine-sale candidate" }
+  ]
+}

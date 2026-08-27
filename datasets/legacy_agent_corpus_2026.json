@@ -1,0 +1,18 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "legacy_agent_corpus_2026",
+  "description": "90+ days of agent execution/observation records from the pre-C32 architecture (retired ~2026-08-14 cutover) -- 10 tier definitions, 9 filtered execution-bus extracts, 10 named artifact files, 4 attributed status/returns records. Static, will not grow.",
+  "url": "https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026",
+  "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
+  "temporalCoverage": "2026-06-16/2026-08-23",
+  "dateModified": "2026-08-27",
+  "identifier": "sha256:569f13e751f40e0a7c55419a9a699bffa543db4e2d9edc3125c4e43e03c0ac3b",
+  "distribution": { "@type": "DataDownload", "encodingFormat": "application/zip", "contentSize": "35 files, manifest-listed" },
+  "isAccessibleForFree": false,
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "fileCount", "value": 35 },
+    { "@type": "PropertyValue", "name": "refreshCadence", "value": "static, one-time compile, done" },
+    { "@type": "PropertyValue", "name": "monetizableAs", "value": "historical/training corpus, lease or one-time-sale candidate" }
+  ]
+}

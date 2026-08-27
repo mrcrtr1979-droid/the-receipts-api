@@ -1,0 +1,19 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "agent_status_bus",
+  "description": "Append-only, event-driven execution bus: every tier/agent/scheduled task self-reports a dated status row on completion. The system's own operating history.",
+  "url": "https://api.receiptsindex.com/datasets/agent_status_bus",
+  "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
+  "temporalCoverage": "2026-07-21/2026-08-27",
+  "dateModified": "2026-08-27",
+  "identifier": "sha256:6568c5f7a6f788c6",
+  "variableMeasured": ["ts","agent","status","did","next","health","receipts"],
+  "distribution": { "@type": "DataDownload", "encodingFormat": "application/jsonlines", "contentSize": "119028" },
+  "isAccessibleForFree": false,
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "rowCount", "value": 175 },
+    { "@type": "PropertyValue", "name": "refreshCadence", "value": "append-only, event-driven" },
+    { "@type": "PropertyValue", "name": "monetizableAs", "value": "historical/training corpus, lease candidate" }
+  ]
+}

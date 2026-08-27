@@ -1,0 +1,19 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "filing_room_ledger",
+  "description": "Entry-count telemetry for the live, monetized receiptsindex.com filing room -- a dated public ledger of official regulatory filings, charter applications, and disclosures.",
+  "url": "https://api.receiptsindex.com/datasets/filing_room_ledger",
+  "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
+  "temporalCoverage": "2026-08-15/2026-08-24",
+  "dateModified": "2026-08-27",
+  "identifier": "sha256:9aca17b29d5d5561",
+  "variableMeasured": ["captured_utc","date","entry_count","wings","method","source"],
+  "distribution": { "@type": "DataDownload", "encodingFormat": "text/csv", "contentSize": "903" },
+  "isAccessibleForFree": false,
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "rowCount", "value": 2 },
+    { "@type": "PropertyValue", "name": "refreshCadence", "value": "intended daily -- currently only 2 captures, flagged" },
+    { "@type": "PropertyValue", "name": "monetizableAs", "value": "product / lease candidate" }
+  ]
+}

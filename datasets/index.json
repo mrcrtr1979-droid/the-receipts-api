@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DataCatalog",
+  "name": "Carter Enterprise LLC Data Shelf",
+  "description": "Machine-legible index of proprietary, dated, source-verifiable datasets produced by Carter Enterprise LLC's legs. Positioning only -- no payment rail is wired yet. Contact for lease/sale inquiries.",
+  "url": "https://api.receiptsindex.com/datasets",
+  "publisher": { "@type": "Organization", "name": "Carter Enterprise LLC", "email": "hello@namebeam.ai" },
+  "dateModified": "2026-08-27",
+  "isAccessibleForFree": false,
+  "dataset": [
+    { "name": "citation_corpus", "url": "https://api.receiptsindex.com/datasets/citation_corpus", "identifier": "sha256:12f63e518333e7cb" },
+    { "name": "intelligence_ledger", "url": "https://api.receiptsindex.com/datasets/intelligence_ledger", "identifier": "sha256:02e8904d5aa16ada" },
+    { "name": "filing_room_ledger", "url": "https://api.receiptsindex.com/datasets/filing_room_ledger", "identifier": "sha256:9aca17b29d5d5561" },
+    { "name": "receipts_api_ledger", "url": "https://api.receiptsindex.com/datasets/receipts_api_ledger", "identifier": "sha256:c48127872c05f18e" },
+    { "name": "get_picked_ledger", "url": "https://api.receiptsindex.com/datasets/get_picked_ledger", "identifier": "sha256:ac79bc9c0db4e517" },
+    { "name": "world_state", "url": "https://api.receiptsindex.com/datasets/world_state", "identifier": "sha256:918fc1ae9183a918" },
+    { "name": "planetary_sensor_family", "url": "https://api.receiptsindex.com/datasets/planetary_sensor_family", "identifier": "sha256-of-hashes:18520bfaff07067e" },
+    { "name": "agent_status_bus", "url": "https://api.receiptsindex.com/datasets/agent_status_bus", "identifier": "sha256:6568c5f7a6f788c6" },
+    { "name": "legacy_agent_corpus_2026", "url": "https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026", "identifier": "sha256:569f13e751f40e0a7c55419a9a699bffa543db4e2d9edc3125c4e43e03c0ac3b" }
+  ],
+  "note_internal_only_not_listed": "gumroad_sales_snapshot (own sales, not for external sale), bot_scoreboard (BACKTESTED/paper, not for sale), site_mirror/social_mirror/droplet_mirror (internal QA telemetry) -- all still tracked in DATA_MOAT_REGISTER_2026-08-24.md's internal sale-ready shelf table, deliberately excluded from this public catalog."
+}
