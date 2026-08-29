@@ -1,0 +1,132 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DataCatalog",
+  "name": "Carter Enterprise LLC Data Shelf",
+  "alternateName": "Machine-Readable Datasets for AI Agents and Devs",
+  "description": "Browse 9 machine-readable proprietary datasets with provenance hashes. Built for developers and autonomous AI agents requiring verified data.",
+  "url": "https://api.receiptsindex.com/datasets",
+  "publisher": { "@type": "Organization", "name": "Carter Enterprise LLC", "email": "hello@namebeam.ai" },
+  "dateModified": "2026-08-27",
+  "isAccessibleForFree": false,
+  "citeAs": "Carter Enterprise LLC. (2026). Carter Enterprise LLC Data Shelf. https://api.receiptsindex.com/datasets",
+  "dataset": [
+    {
+      "@type": "Dataset",
+      "name": "citation_corpus",
+      "identifier": "sha256:12f63e518333e7cb",
+      "url": "https://api.receiptsindex.com/datasets/citation_corpus",
+      "temporalCoverage": "2026-07-29/2026-08-25",
+      "isAccessibleForFree": false,
+      "license": "Proprietary, contact for terms",
+      "description": "127 rows. Weekly Tuesday refresh cadence.",
+      "distribution": [
+        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/citation_corpus" }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "intelligence_ledger",
+      "identifier": "sha256:02e8904d5aa16ada",
+      "url": "https://api.receiptsindex.com/datasets/intelligence_ledger",
+      "temporalCoverage": "2026-06-26/2026-08-26",
+      "isAccessibleForFree": false,
+      "license": "Proprietary, contact for terms",
+      "description": "1040 rows. Daily refresh cadence.",
+      "distribution": [
+        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/intelligence_ledger" }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "filing_room_ledger",
+      "identifier": "sha256:9aca17b29d5d5561",
+      "url": "https://api.receiptsindex.com/datasets/filing_room_ledger",
+      "temporalCoverage": "2026-08-15/2026-08-24",
+      "isAccessibleForFree": false,
+      "license": "Proprietary, contact for terms",
+      "description": "2 rows. Note: STALE against an intended-daily cadence.",
+      "distribution": [
+        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/filing_room_ledger" }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "receipts_api_ledger",
+      "identifier": "sha256:c48127872c05f18e",
+      "url": "https://api.receiptsindex.com/datasets/receipts_api_ledger",
+      "temporalCoverage": "2026-08-15/2026-08-24",
+      "isAccessibleForFree": false,
+      "license": "Proprietary, contact for terms",
+      "description": "2 rows. Note: STALE against an intended-daily cadence.",
+      "distribution": [
+        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/receipts_api_ledger" }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "get_picked_ledger",
+      "identifier": "sha256:ac79bc9c0db4e517",
+      "url": "https://api.receiptsindex.com/datasets/get_picked_ledger",
+      "temporalCoverage": "2026-08-24/2026-08-24",
+      "isAccessibleForFree": false,
+      "license": "Proprietary, contact for terms",
+      "description": "2 rows. Single capture day (2026-08-24). Daily refresh cadence and brand new.",
+      "distribution": [
+        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/get_picked_ledger" }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "world_state",
+      "identifier": "sha256:918fc1ae9183a918",
+      "url": "https://api.receiptsindex.com/datasets/world_state",
+      "temporalCoverage": "2026-07-01/2026-08-19",
+      "isAccessibleForFree": false,
+      "license": "Proprietary, contact for terms",
+      "description": "30 rows. Note: STALE 8 days behind an intended-daily cadence.",
+      "distribution": [
+        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/world_state" }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "planetary_sensor_family",
+      "identifier": "sha256-of-hashes:18520bfaff07067e",
+      "url": "https://api.receiptsindex.com/datasets/planetary_sensor_family",
+      "temporalCoverage": "2026-07-01/2026-08-19",
+      "isAccessibleForFree": false,
+      "license": "Proprietary, contact for terms",
+      "description": "1731 combined rows across 14 files. Feeds world_state daily.",
+      "distribution": [
+        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/planetary_sensor_family" }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "agent_status_bus",
+      "identifier": "sha256:6568c5f7a6f788c6",
+      "url": "https://api.receiptsindex.com/datasets/agent_status_bus",
+      "temporalCoverage": "2026-07-21/2026-08-27",
+      "isAccessibleForFree": false,
+      "license": "Proprietary, contact for terms",
+      "description": "175 rows. Append-only event-driven cadence.",
+      "distribution": [
+        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/agent_status_bus" }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "legacy_agent_corpus_2026",
+      "identifier": "sha256:569f13e751f40e0a7c55419a9a699bffa543db4e2d9edc3125c4e43e03c0ac3b",
+      "url": "https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026",
+      "temporalCoverage": "2026-06-16/2026-08-23",
+      "isAccessibleForFree": false,
+      "license": "Proprietary, contact for terms",
+      "description": "35 files. Static one-time archive.",
+      "distribution": [
+        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026" }
+      ]
+    }
+  ],
+  "note_internal_only_not_listed": "gumroad_sales_snapshot (own sales, not for external sale), bot_scoreboard (BACKTESTED/paper, not for sale), site_mirror/social_mirror/droplet_mirror (internal QA telemetry) -- all still tracked in DATA_MOAT_REGISTER_2026-08-24.md's internal sale-ready shelf table, deliberately excluded from this public catalog."
+}
