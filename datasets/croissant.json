@@ -1,0 +1,33 @@
+{
+"@context": {
+"@language": "en",
+"@vocab": "https://schema.org/",
+"cr": "http://mlcommons.org/croissant/",
+"citeAs": "cr:citeAs"
+},
+"@type": "Dataset",
+"name": "Carter Enterprise LLC Data Shelf",
+"description": "Machine-legible index of proprietary, dated, source-verifiable datasets produced by Carter Enterprise LLC's legs.",
+"url": "https://api.receiptsindex.com/datasets",
+"citeAs": "Carter Enterprise LLC. (2026). Carter Enterprise LLC Data Shelf. https://api.receiptsindex.com/datasets",
+"license": "Proprietary, contact for terms",
+"isAccessibleForFree": false,
+"dateModified": "2026-08-27",
+"publisher": {
+"@type": "Organization",
+"name": "Carter Enterprise LLC",
+"email": "hello@namebeam.ai"
+},
+"distribution": [
+{ "@type": "cr:FileObject", "@id": "citation_corpus", "name": "citation_corpus", "contentUrl": "https://api.receiptsindex.com/datasets/citation_corpus", "description": "127 rows, weekly Tuesday refresh (2026-07-29/2026-08-25)" },
+{ "@type": "cr:FileObject", "@id": "intelligence_ledger", "name": "intelligence_ledger", "contentUrl": "https://api.receiptsindex.com/datasets/intelligence_ledger", "description": "1040 rows, daily refresh (2026-06-26/2026-08-26)" },
+{ "@type": "cr:FileObject", "@id": "filing_room_ledger", "name": "filing_room_ledger", "contentUrl": "https://api.receiptsindex.com/datasets/filing_room_ledger", "description": "2 rows (2026-08-15/2026-08-24). Note: STALE against an intended-daily cadence." },
+{ "@type": "cr:FileObject", "@id": "receipts_api_ledger", "name": "receipts_api_ledger", "contentUrl": "https://api.receiptsindex.com/datasets/receipts_api_ledger", "description": "2 rows (2026-08-15/2026-08-24). Note: STALE against intended-daily." },
+{ "@type": "cr:FileObject", "@id": "get_picked_ledger", "name": "get_picked_ledger", "contentUrl": "https://api.receiptsindex.com/datasets/get_picked_ledger", "description": "2 rows, single capture day (2026-08-24/2026-08-24), daily and brand new." },
+{ "@type": "cr:FileObject", "@id": "world_state", "name": "world_state", "contentUrl": "https://api.receiptsindex.com/datasets/world_state", "description": "30 rows (2026-07-01/2026-08-19). Note: STALE 8 days behind an intended-daily cadence." },
+{ "@type": "cr:FileObject", "@id": "planetary_sensor_family", "name": "planetary_sensor_family", "contentUrl": "https://api.receiptsindex.com/datasets/planetary_sensor_family", "description": "1731 combined rows across 14 files, feeds world_state daily (2026-07-01/2026-08-19)." },
+{ "@type": "cr:FileObject", "@id": "agent_status_bus", "name": "agent_status_bus", "contentUrl": "https://api.receiptsindex.com/datasets/agent_status_bus", "description": "175 rows, append-only event-driven (2026-07-21/2026-08-27)." },
+{ "@type": "cr:FileObject", "@id": "legacy_agent_corpus_2026", "name": "legacy_agent_corpus_2026", "contentUrl": "https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026", "description": "35 files, static one-time archive (2026-06-16/2026-08-23)." }
+],
+"recordSet": []
+}
