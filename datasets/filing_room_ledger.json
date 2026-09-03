@@ -5,15 +5,15 @@
   "description": "Entry-count telemetry for the live, monetized receiptsindex.com filing room -- a dated public ledger of official regulatory filings, charter applications, and disclosures.",
   "url": "https://api.receiptsindex.com/datasets/filing_room_ledger",
   "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
-  "temporalCoverage": "2026-08-15/2026-08-24",
-  "dateModified": "2026-08-27",
-  "identifier": "sha256:9aca17b29d5d5561",
+  "temporalCoverage": "2026-08-15/2026-08-31",
+  "dateModified": "2026-09-03",
+  "identifier": "sha256:ccf52f23afb9d0e6",
   "variableMeasured": ["captured_utc","date","entry_count","wings","method","source"],
-  "distribution": { "@type": "DataDownload", "encodingFormat": "text/csv", "contentSize": "903" },
+  "distribution": { "@type": "DataDownload", "encodingFormat": "text/csv", "contentSize": "1195" },
   "isAccessibleForFree": false,
   "additionalProperty": [
-    { "@type": "PropertyValue", "name": "rowCount", "value": 2 },
-    { "@type": "PropertyValue", "name": "refreshCadence", "value": "intended daily -- currently only 2 captures, flagged" },
+    { "@type": "PropertyValue", "name": "rowCount", "value": 3 },
+    { "@type": "PropertyValue", "name": "refreshCadence", "value": "intended daily -- currently 3 captures across 16 days, flat at 66 entries and 16 wings, flagged" },
     { "@type": "PropertyValue", "name": "monetizableAs", "value": "product / lease candidate" }
   ]
 }
