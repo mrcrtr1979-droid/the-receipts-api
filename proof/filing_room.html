@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Filing Room Ledger - Proof Page</title>
+<style>
+body { font-family: Arial, Helvetica, sans-serif; max-width: 800px; margin: 0 auto; padding: 24px; line-height: 1.5; color: #1a1a1a; background: #ffffff; }
+h1 { font-size: 1.4em; border-bottom: 2px solid #1a1a1a; padding-bottom: 8px; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: left; font-size: 0.92em; }
+th { background: #f2f2f2; }
+code { background: #f2f2f2; padding: 2px 5px; }
+.warn { background: #fff7e6; border: 1px solid #f0d9a0; padding: 10px 14px; }
+footer { margin-top: 3em; border-top: 1px solid #ccc; padding-top: 1em; font-size: 0.85em; color: #555; }
+</style>
+</head>
+<body>
+<h1>Filing Room Ledger - Proof Page</h1>
+
+<table>
+<tr><th>Dataset name</th><td>filing_room_ledger</td></tr>
+<tr><th>Row count</th><td>3 data rows</td></tr>
+<tr><th>Date range</th><td>2026-08-15 to 2026-08-31</td></tr>
+<tr><th>Source file</th><td>sensors/filing_room_ledger.csv</td></tr>
+<tr><th>sha256 (first 16)</th><td><code>ccf52f23afb9d0e6</code></td></tr>
+<tr><th>Status</th><td>Real. This hash does not match the live shelf's currently published identifier
+(sha256:9aca17b29d5d5561) because a third row was appended after that identifier was last taken.
+This drift is disclosed, not hidden, and is the reason this refresh was built.</td></tr>
+</table>
+
+<h2>Recompute this hash yourself</h2>
+<p>A stranger with a copy of this Brain_Kit repository can recompute this exact hash by running:</p>
+<pre>sha256sum sensors/filing_room_ledger.csv | cut -c1-16</pre>
+<p>Expected output: <code>ccf52f23afb9d0e6</code></p>
+
+<h2>What this data is</h2>
+<p>A daily count of "Copy citation" occurrences on receiptsindex.com's root page (one per logged
+ledger entry) plus a section count, read live in a browser. All 3 captures to date read the same
+number: 66 entries, 16 wings, flat across 16 days.</p>
+
+<h2>Disclosure</h2>
+<p>We disclose: AI made this page; the data is machine-collected and dated.</p>
+
+<footer>
+Carter Enterprise LLC, 30 N Gould St, Ste 65270, Sheridan, WY 82801
+</footer>
+</body>
+</html>
