@@ -6,14 +6,14 @@
   "url": "https://api.receiptsindex.com/datasets/get_picked_ledger",
   "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
   "temporalCoverage": "2026-08-24/2026-08-24",
-  "dateModified": "2026-08-27",
+  "dateModified": "2026-09-03",
   "identifier": "sha256:ac79bc9c0db4e517",
   "variableMeasured": ["captured_utc","date","platform","listing_id","active","price","ai_disclosure_present","source"],
   "distribution": { "@type": "DataDownload", "encodingFormat": "text/csv", "contentSize": "2748" },
   "isAccessibleForFree": false,
   "additionalProperty": [
     { "@type": "PropertyValue", "name": "rowCount", "value": 2 },
-    { "@type": "PropertyValue", "name": "refreshCadence", "value": "daily, brand new sensor (opened 2026-08-27)" },
+    { "@type": "PropertyValue", "name": "refreshCadence", "value": "daily, re-verified 2026-09-03, source file unchanged (hash identical) since 2026-08-24, flagged stale" },
     { "@type": "PropertyValue", "name": "monetizableAs", "value": "product candidate" }
   ]
 }
