@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Makers Receipt Storefront Pulse - Proof Page</title>
+<style>
+body { font-family: Arial, Helvetica, sans-serif; max-width: 800px; margin: 0 auto; padding: 24px; line-height: 1.5; color: #1a1a1a; background: #ffffff; }
+h1 { font-size: 1.4em; border-bottom: 2px solid #1a1a1a; padding-bottom: 8px; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: left; font-size: 0.92em; }
+th { background: #f2f2f2; }
+code { background: #f2f2f2; padding: 2px 5px; }
+.warn { background: #fff7e6; border: 1px solid #f0d9a0; padding: 10px 14px; }
+footer { margin-top: 3em; border-top: 1px solid #ccc; padding-top: 1em; font-size: 0.85em; color: #555; }
+</style>
+</head>
+<body>
+<h1>Makers Receipt Storefront Pulse - Proof Page</h1>
+
+<table>
+<tr><th>Dataset name</th><td>makers_receipt_storefront_pulse</td></tr>
+<tr><th>Row count</th><td>8 dated capture events across 2 channels (Etsy + Shopify)</td></tr>
+<tr><th>Date range</th><td>2026-08-12 to 2026-09-02</td></tr>
+<tr><th>Source files</th><td>storefront_mirror/ETSY_STATUS.md, storefront_mirror/STOREFRONT_STATUS.md,
+storefront_mirror/STOREFRONT_STATUS_2026-08-29.md, storefront_mirror/SHOPIFY_STATUS.md</td></tr>
+<tr><th>Combined sha256-of-hashes (first 16)</th><td><code>2f3e83de9a495396</code></td></tr>
+<tr><th>Status</th><td>Real dated reads. Every read to date shows 0 orders, $0.00 revenue.</td></tr>
+</table>
+
+<h2>Recompute this hash yourself</h2>
+<p>A stranger with a copy of this Brain_Kit repository can recompute this exact combined hash by
+running (from the repository root, POSIX shell):</p>
+<pre>for f in storefront_mirror/ETSY_STATUS.md storefront_mirror/STOREFRONT_STATUS.md storefront_mirror/STOREFRONT_STATUS_2026-08-29.md storefront_mirror/SHOPIFY_STATUS.md; do sha256sum "$f"; done | sha256sum | cut -c1-16</pre>
+<p>Expected output: <code>2f3e83de9a495396</code></p>
+
+<h2>Per-file hashes</h2>
+<table>
+<tr><th>File</th><th>sha256 (first 16)</th></tr>
+<tr><td>storefront_mirror/ETSY_STATUS.md</td><td><code>4ee1b702d94eb9c1</code></td></tr>
+<tr><td>storefront_mirror/STOREFRONT_STATUS.md</td><td><code>c04c561cc08d6623</code></td></tr>
+<tr><td>storefront_mirror/STOREFRONT_STATUS_2026-08-29.md</td><td><code>90dea789e09c148b</code></td></tr>
+<tr><td>storefront_mirror/SHOPIFY_STATUS.md</td><td><code>6652682639f8b034</code></td></tr>
+</table>
+
+<h2>What this data is</h2>
+<p>Dated, repeated reads of the Maker's Receipt storefronts' own traffic and order panels (Etsy
+Shop Manager Stats, Shopify Admin API), read live and quoted, not estimated. Zero orders and zero
+revenue at every read so far, printed at full size, not hidden.</p>
+
+<h2>Disclosure</h2>
+<p>We disclose: AI made this page; the data is machine-collected and dated.</p>
+
+<footer>
+Carter Enterprise LLC, 30 N Gould St, Ste 65270, Sheridan, WY 82801
+</footer>
+</body>
+</html>
