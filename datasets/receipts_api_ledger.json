@@ -6,14 +6,14 @@
   "url": "https://api.receiptsindex.com/datasets/receipts_api_ledger",
   "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
   "temporalCoverage": "2026-08-15/2026-08-24",
-  "dateModified": "2026-08-27",
+  "dateModified": "2026-09-03",
   "identifier": "sha256:c48127872c05f18e",
   "variableMeasured": ["captured_utc","date","page_bytes","paid_api_documented","free_tool_present","jsonld_domain","source"],
   "distribution": { "@type": "DataDownload", "encodingFormat": "text/csv", "contentSize": "1062" },
   "isAccessibleForFree": false,
   "additionalProperty": [
     { "@type": "PropertyValue", "name": "rowCount", "value": 2 },
-    { "@type": "PropertyValue", "name": "refreshCadence", "value": "intended daily -- currently only 2 captures, flagged" },
+    { "@type": "PropertyValue", "name": "refreshCadence", "value": "intended daily -- re-verified 2026-09-03, still only 2 captures, source file unchanged (hash identical), flagged stale" },
     { "@type": "PropertyValue", "name": "monetizableAs", "value": "product / lease candidate" }
   ]
 }
