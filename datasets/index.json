@@ -3,10 +3,10 @@
   "@type": "DataCatalog",
   "name": "Carter Enterprise LLC Data Shelf",
   "alternateName": "Machine-Readable Datasets for AI Agents and Devs",
-  "description": "Browse 9 machine-readable proprietary datasets with provenance hashes. Built for developers and autonomous AI agents requiring verified data.",
+  "description": "Browse 10 machine-readable proprietary datasets with provenance hashes. Built for developers and autonomous AI agents requiring verified data.",
   "url": "https://api.receiptsindex.com/datasets",
   "publisher": { "@type": "Organization", "name": "Carter Enterprise LLC", "email": "hello@namebeam.ai" },
-  "dateModified": "2026-08-27",
+  "dateModified": "2026-09-03",
   "isAccessibleForFree": false,
   "citeAs": "Carter Enterprise LLC. (2026). Carter Enterprise LLC Data Shelf. https://api.receiptsindex.com/datasets",
   "dataset": [
@@ -39,12 +39,12 @@
     {
       "@type": "Dataset",
       "name": "filing_room_ledger",
-      "identifier": "sha256:9aca17b29d5d5561",
+      "identifier": "sha256:ccf52f23afb9d0e6",
       "url": "https://api.receiptsindex.com/datasets/filing_room_ledger",
-      "temporalCoverage": "2026-08-15/2026-08-24",
+      "temporalCoverage": "2026-08-15/2026-08-31",
       "isAccessibleForFree": false,
       "license": "Proprietary, contact for terms",
-      "description": "2 rows. Note: STALE against an intended-daily cadence.",
+      "description": "3 rows, re-verified 2026-09-03. Note: intended daily, currently 3 captures across 16 days, flat at 66 entries and 16 wings.",
       "distribution": [
         { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/filing_room_ledger" }
       ]
@@ -57,7 +57,7 @@
       "temporalCoverage": "2026-08-15/2026-08-24",
       "isAccessibleForFree": false,
       "license": "Proprietary, contact for terms",
-      "description": "2 rows. Note: STALE against an intended-daily cadence.",
+      "description": "2 rows, re-verified 2026-09-03 with unchanged hash. Note: STALE against an intended-daily cadence.",
       "distribution": [
         { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/receipts_api_ledger" }
       ]
@@ -70,7 +70,7 @@
       "temporalCoverage": "2026-08-24/2026-08-24",
       "isAccessibleForFree": false,
       "license": "Proprietary, contact for terms",
-      "description": "2 rows. Single capture day (2026-08-24). Daily refresh cadence and brand new.",
+      "description": "2 rows, re-verified 2026-09-03 with unchanged hash. Single capture day (2026-08-24), stale 10 days.",
       "distribution": [
         { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/get_picked_ledger" }
       ]
@@ -125,6 +125,19 @@
       "description": "35 files. Static one-time archive.",
       "distribution": [
         { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026" }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "makers_receipt_storefront_pulse",
+      "identifier": "sha256-of-hashes:2f3e83de9a495396",
+      "url": "https://api.receiptsindex.com/datasets/makers_receipt_storefront_pulse",
+      "temporalCoverage": "2026-08-12/2026-09-02",
+      "isAccessibleForFree": false,
+      "license": "Proprietary, contact for terms",
+      "description": "8 dated capture events across 2 channels (Etsy + Shopify). Every read shows 0 orders, $0.00 revenue.",
+      "distribution": [
+        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/makers_receipt_storefront_pulse" }
       ]
     }
   ],
