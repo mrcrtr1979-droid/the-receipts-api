@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://api.receiptsindex.com/</loc><lastmod>2026-07-27</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/index.html</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/citation_corpus.json</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/intelligence_ledger.json</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/filing_room_ledger.json</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/receipts_api_ledger.json</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/get_picked_ledger.json</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/world_state.json</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/planetary_sensor_family.json</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/agent_status_bus.json</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026.json</loc><lastmod>2026-08-30</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/makers_receipt_storefront_pulse.json</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/proof/get_picked.html</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/proof/filing_room.html</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/proof/receipts_api.html</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/proof/makers_receipt.html</loc><lastmod>2026-09-03</lastmod></url>
 </urlset>
