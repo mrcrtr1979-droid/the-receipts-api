@@ -1,145 +1,154 @@
 {
-  "@context": "https://schema.org",
+  "@context": "https://schema.org/",
   "@type": "DataCatalog",
   "name": "Carter Enterprise LLC Data Shelf",
   "alternateName": "Machine-Readable Datasets for AI Agents and Devs",
-  "description": "Browse 10 machine-readable proprietary datasets with provenance hashes. Built for developers and autonomous AI agents requiring verified data.",
+  "description": "Browse 10 proprietary dataset metadata records with provenance hashes, dates, and source-verifiable descriptions from Carter Enterprise LLC.",
   "url": "https://api.receiptsindex.com/datasets",
-  "publisher": { "@type": "Organization", "name": "Carter Enterprise LLC", "email": "hello@namebeam.ai" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Carter Enterprise LLC",
+    "url": "https://api.receiptsindex.com/",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "hello@namebeam.ai"
+    }
+  },
   "dateModified": "2026-09-03",
   "isAccessibleForFree": false,
+  "license": "https://api.receiptsindex.com/datasets#license",
   "citeAs": "Carter Enterprise LLC. (2026). Carter Enterprise LLC Data Shelf. https://api.receiptsindex.com/datasets",
   "dataset": [
     {
       "@type": "Dataset",
       "name": "citation_corpus",
-      "identifier": "sha256:12f63e518333e7cb",
-      "url": "https://api.receiptsindex.com/datasets/citation_corpus",
-      "temporalCoverage": "2026-07-29/2026-08-25",
+      "identifier": "sha256:5ff87bf34c6e399f",
+      "creator": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "publisher": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "url": "https://api.receiptsindex.com/datasets/citation_corpus.json",
+      "temporalCoverage": "2026-07-29/2026-08-29",
       "isAccessibleForFree": false,
-      "license": "Proprietary, contact for terms",
-      "description": "127 rows. Weekly Tuesday refresh cadence.",
-      "distribution": [
-        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/citation_corpus" }
-      ]
+      "license": "https://api.receiptsindex.com/datasets#license",
+      "description": "378 rows. Dated AI-answer-engine citation telemetry across 5 engines on buyer-intent prompts. Weekly Tuesday refresh cadence.",
+      "includedInDataCatalog": {"@type":"DataCatalog","name":"Carter Enterprise LLC Data Shelf","url":"https://api.receiptsindex.com/datasets"}
     },
     {
       "@type": "Dataset",
       "name": "intelligence_ledger",
-      "identifier": "sha256:02e8904d5aa16ada",
-      "url": "https://api.receiptsindex.com/datasets/intelligence_ledger",
-      "temporalCoverage": "2026-06-26/2026-08-26",
+      "identifier": "sha256:4f1d9bc30b3caa32",
+      "creator": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "publisher": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "url": "https://api.receiptsindex.com/datasets/intelligence_ledger.json",
+      "temporalCoverage": "2026-06-26/2026-09-01",
       "isAccessibleForFree": false,
-      "license": "Proprietary, contact for terms",
-      "description": "1040 rows. Daily refresh cadence.",
-      "distribution": [
-        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/intelligence_ledger" }
-      ]
+      "license": "https://api.receiptsindex.com/datasets#license",
+      "description": "1114 rows. Verified, dated cross-domain intelligence: findings, metrics, and actions taken across every leg. Daily refresh cadence.",
+      "includedInDataCatalog": {"@type":"DataCatalog","name":"Carter Enterprise LLC Data Shelf","url":"https://api.receiptsindex.com/datasets"}
     },
     {
       "@type": "Dataset",
       "name": "filing_room_ledger",
       "identifier": "sha256:ccf52f23afb9d0e6",
-      "url": "https://api.receiptsindex.com/datasets/filing_room_ledger",
+      "creator": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "publisher": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "url": "https://api.receiptsindex.com/datasets/filing_room_ledger.json",
       "temporalCoverage": "2026-08-15/2026-08-31",
       "isAccessibleForFree": false,
-      "license": "Proprietary, contact for terms",
-      "description": "3 rows, re-verified 2026-09-03. Note: intended daily, currently 3 captures across 16 days, flat at 66 entries and 16 wings.",
-      "distribution": [
-        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/filing_room_ledger" }
-      ]
+      "license": "https://api.receiptsindex.com/datasets#license",
+      "description": "3 rows, dated captures 2026-08-15 to 2026-08-31, re-verified 2026-09-03. Filing Room entry-count ledger, flat at 66 entries and 16 wings across all 3 reads, zero new citations in 16 days.",
+      "includedInDataCatalog": {"@type":"DataCatalog","name":"Carter Enterprise LLC Data Shelf","url":"https://api.receiptsindex.com/datasets"}
     },
     {
       "@type": "Dataset",
       "name": "receipts_api_ledger",
       "identifier": "sha256:c48127872c05f18e",
-      "url": "https://api.receiptsindex.com/datasets/receipts_api_ledger",
+      "creator": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "publisher": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "url": "https://api.receiptsindex.com/datasets/receipts_api_ledger.json",
       "temporalCoverage": "2026-08-15/2026-08-24",
       "isAccessibleForFree": false,
-      "license": "Proprietary, contact for terms",
-      "description": "2 rows, re-verified 2026-09-03 with unchanged hash. Note: STALE against an intended-daily cadence.",
-      "distribution": [
-        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/receipts_api_ledger" }
-      ]
+      "license": "https://api.receiptsindex.com/datasets#license",
+      "description": "2 rows, dated captures 2026-08-15 and 2026-08-24, re-verified 2026-09-03 with unchanged hash. Receipts API page-byte and structured-data ledger. Stale, 10 days since last capture.",
+      "includedInDataCatalog": {"@type":"DataCatalog","name":"Carter Enterprise LLC Data Shelf","url":"https://api.receiptsindex.com/datasets"}
     },
     {
       "@type": "Dataset",
       "name": "get_picked_ledger",
       "identifier": "sha256:ac79bc9c0db4e517",
-      "url": "https://api.receiptsindex.com/datasets/get_picked_ledger",
+      "creator": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "publisher": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "url": "https://api.receiptsindex.com/datasets/get_picked_ledger.json",
       "temporalCoverage": "2026-08-24/2026-08-24",
       "isAccessibleForFree": false,
-      "license": "Proprietary, contact for terms",
-      "description": "2 rows, re-verified 2026-09-03 with unchanged hash. Single capture day (2026-08-24), stale 10 days.",
-      "distribution": [
-        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/get_picked_ledger" }
-      ]
+      "license": "https://api.receiptsindex.com/datasets#license",
+      "description": "2 rows, single captured day 2026-08-24, re-verified 2026-09-03 with unchanged hash. Get Picked Gumroad listing status and price ledger. Stale, 10 days since last capture, disclosed plainly.",
+      "includedInDataCatalog": {"@type":"DataCatalog","name":"Carter Enterprise LLC Data Shelf","url":"https://api.receiptsindex.com/datasets"}
     },
     {
       "@type": "Dataset",
       "name": "world_state",
       "identifier": "sha256:918fc1ae9183a918",
-      "url": "https://api.receiptsindex.com/datasets/world_state",
+      "creator": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "publisher": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "url": "https://api.receiptsindex.com/datasets/world_state.json",
       "temporalCoverage": "2026-07-01/2026-08-19",
       "isAccessibleForFree": false,
-      "license": "Proprietary, contact for terms",
-      "description": "30 rows. Note: STALE 8 days behind an intended-daily cadence.",
-      "distribution": [
-        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/world_state" }
-      ]
+      "license": "https://api.receiptsindex.com/datasets#license",
+      "description": "30 rows of dated world-state records, fed by the planetary sensor family. Note: stale, 8 days behind an intended-daily cadence.",
+      "includedInDataCatalog": {"@type":"DataCatalog","name":"Carter Enterprise LLC Data Shelf","url":"https://api.receiptsindex.com/datasets"}
     },
     {
       "@type": "Dataset",
       "name": "planetary_sensor_family",
       "identifier": "sha256-of-hashes:18520bfaff07067e",
-      "url": "https://api.receiptsindex.com/datasets/planetary_sensor_family",
+      "creator": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "publisher": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "url": "https://api.receiptsindex.com/datasets/planetary_sensor_family.json",
       "temporalCoverage": "2026-07-01/2026-08-19",
       "isAccessibleForFree": false,
-      "license": "Proprietary, contact for terms",
-      "description": "1731 combined rows across 14 files. Feeds world_state daily.",
-      "distribution": [
-        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/planetary_sensor_family" }
-      ]
+      "license": "https://api.receiptsindex.com/datasets#license",
+      "description": "1731 combined rows across 14 sensor files, feeding world_state on a daily cadence. Provenance is a hash of hashes across all 14.",
+      "includedInDataCatalog": {"@type":"DataCatalog","name":"Carter Enterprise LLC Data Shelf","url":"https://api.receiptsindex.com/datasets"}
     },
     {
       "@type": "Dataset",
       "name": "agent_status_bus",
-      "identifier": "sha256:6568c5f7a6f788c6",
-      "url": "https://api.receiptsindex.com/datasets/agent_status_bus",
-      "temporalCoverage": "2026-07-21/2026-08-27",
+      "identifier": "sha256:3d49b203a657918b",
+      "creator": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "publisher": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "url": "https://api.receiptsindex.com/datasets/agent_status_bus.json",
+      "temporalCoverage": "2026-07-21/2026-08-30",
       "isAccessibleForFree": false,
-      "license": "Proprietary, contact for terms",
-      "description": "175 rows. Append-only event-driven cadence.",
-      "distribution": [
-        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/agent_status_bus" }
-      ]
+      "license": "https://api.receiptsindex.com/datasets#license",
+      "description": "242 rows. Append-only execution bus: every tier or scheduled task self-reports a row on completion. Event-driven cadence.",
+      "includedInDataCatalog": {"@type":"DataCatalog","name":"Carter Enterprise LLC Data Shelf","url":"https://api.receiptsindex.com/datasets"}
     },
     {
       "@type": "Dataset",
       "name": "legacy_agent_corpus_2026",
       "identifier": "sha256:569f13e751f40e0a7c55419a9a699bffa543db4e2d9edc3125c4e43e03c0ac3b",
-      "url": "https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026",
+      "creator": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "publisher": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "url": "https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026.json",
       "temporalCoverage": "2026-06-16/2026-08-23",
       "isAccessibleForFree": false,
-      "license": "Proprietary, contact for terms",
-      "description": "35 files. Static one-time archive.",
-      "distribution": [
-        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026" }
-      ]
+      "license": "https://api.receiptsindex.com/datasets#license",
+      "description": "35 files across 4 source classes. Static one-time pre-cutover archive compiled 2026-08-27, will not grow.",
+      "includedInDataCatalog": {"@type":"DataCatalog","name":"Carter Enterprise LLC Data Shelf","url":"https://api.receiptsindex.com/datasets"}
     },
     {
       "@type": "Dataset",
       "name": "makers_receipt_storefront_pulse",
       "identifier": "sha256-of-hashes:2f3e83de9a495396",
-      "url": "https://api.receiptsindex.com/datasets/makers_receipt_storefront_pulse",
+      "creator": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "publisher": {"@type":"Organization","name":"Carter Enterprise LLC","url":"https://api.receiptsindex.com/"},
+      "url": "https://api.receiptsindex.com/datasets/makers_receipt_storefront_pulse.json",
       "temporalCoverage": "2026-08-12/2026-09-02",
       "isAccessibleForFree": false,
-      "license": "Proprietary, contact for terms",
-      "description": "8 dated capture events across 2 channels (Etsy + Shopify). Every read shows 0 orders, $0.00 revenue.",
-      "distribution": [
-        { "@type": "DataDownload", "contentUrl": "https://api.receiptsindex.com/datasets/makers_receipt_storefront_pulse" }
-      ]
+      "license": "https://api.receiptsindex.com/datasets#license",
+      "description": "8 dated capture events across 2 channels (Etsy + Shopify), 2026-08-12 to 2026-09-02, for the Maker's Receipt storefronts. Every read shows 0 orders, $0.00 revenue, printed as measured.",
+      "includedInDataCatalog": {"@type":"DataCatalog","name":"Carter Enterprise LLC Data Shelf","url":"https://api.receiptsindex.com/datasets"}
     }
-  ],
-  "note_internal_only_not_listed": "gumroad_sales_snapshot (own sales, not for external sale), bot_scoreboard (BACKTESTED/paper, not for sale), site_mirror/social_mirror/droplet_mirror (internal QA telemetry) -- all still tracked in DATA_MOAT_REGISTER_2026-08-24.md's internal sale-ready shelf table, deliberately excluded from this public catalog."
+  ]
 }
