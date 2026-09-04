@@ -3,6 +3,8 @@
   <url><loc>https://api.receiptsindex.com/</loc><lastmod>2026-07-27</lastmod></url>
   <url><loc>https://api.receiptsindex.com/datasets</loc><lastmod>2026-09-03</lastmod></url>
   <url><loc>https://api.receiptsindex.com/datasets/index.html</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/index.json</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/datasets/croissant.json</loc><lastmod>2026-09-03</lastmod></url>
   <url><loc>https://api.receiptsindex.com/datasets/citation_corpus.json</loc><lastmod>2026-09-01</lastmod></url>
   <url><loc>https://api.receiptsindex.com/datasets/intelligence_ledger.json</loc><lastmod>2026-09-01</lastmod></url>
   <url><loc>https://api.receiptsindex.com/datasets/filing_room_ledger.json</loc><lastmod>2026-09-03</lastmod></url>
