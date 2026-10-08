@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "filing_room_ledger",
-  "description": "Entry-count telemetry for the live, monetized receiptsindex.com filing room -- a dated public ledger of official regulatory filings, charter applications, and disclosures.",
+  "description": "Entry-count telemetry for the live receiptsindex.com filing room, a dated public ledger of official regulatory filings, charter applications, and disclosures. Note: rows 2026-09-11 to 2026-10-07 counted a script string and read 2 while the page held 66 entries; the count method was corrected 2026-10-08.",
   "url": "https://api.receiptsindex.com/datasets/filing_room_ledger.json",
   "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
   "temporalCoverage": "2026-08-15/2026-10-07",
