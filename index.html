@@ -41,7 +41,7 @@
       "provider": { "@id": "https://api.receiptsindex.com/#organization" },
       "serviceType": "Merchant and claim verification for agentic commerce",
       "areaServed": "Worldwide",
-      "description": "Dated, source-backed attestations that a merchant, business, or claim checks out against primary public sources, issued as schema.org JSON-LD and available as a W3C Verifiable Credential.",
+      "description": "Dated, source-backed attestations that a merchant, business, or claim checks out against primary public sources, issued as schema.org JSON-LD.",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "The Receipts API pricing",
@@ -107,7 +107,7 @@
           "name": "What format is a Receipts API attestation issued in?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "As schema.org JSON-LD (ClaimReview) that an agent or crawler can read directly, and optionally as a W3C Verifiable Credential (VC 2.0) for systems that need a signed, portable credential."
+            "text": "As schema.org JSON-LD (ClaimReview) that an agent or crawler can read directly. W3C Verifiable Credential (VC 2.0) output is not built yet."
           }
         },
         {
@@ -589,9 +589,9 @@
           as an added signal, not to replace either protocol.</p>
         </div>
         <div class="slot-card">
-          <h4>Issuable as a W3C Verifiable Credential</h4>
-          <p>For systems that need a signed, portable credential rather than a JSON-LD snippet, the same
-          attestation can be issued as a W3C Verifiable Credential (VC 2.0), tied to the date it was checked.</p>
+          <h4>W3C Verifiable Credential: not built yet</h4>
+          <p>Signed, portable output as a W3C Verifiable Credential (VC 2.0) is not built yet. Today the free
+          check returns schema.org JSON-LD.</p>
         </div>
       </div>
 
@@ -707,8 +707,8 @@
         </div>
         <div class="faq-item">
           <h4>What format is an attestation issued in?</h4>
-          <p>As schema.org JSON-LD (ClaimReview) that an agent or crawler can read directly, and optionally as
-          a W3C Verifiable Credential (VC 2.0) for systems that need a signed, portable credential.</p>
+          <p>As schema.org JSON-LD (ClaimReview) that an agent or crawler can read directly. W3C Verifiable
+          Credential (VC 2.0) output is not built yet.</p>
         </div>
         <div class="faq-item">
           <h4>Is this legal or financial advice?</h4>
@@ -1119,7 +1119,7 @@
       qs:[
         {q:"What is this?",a:"The Receipts API is built to check the business behind a transaction and the claim behind a recommendation against primary public sources. It is not open for calls yet. For access or licensing, email terry@namebeam.ai. Verified as of a date, per a named source. Not a guarantee.",cta:[["Run a free Know Your Merchant check","#check"]]},
         {q:"What does it cost?",a:"The Know Your Merchant check on this page is free. The Receipts API is not open for calls yet. For access or licensing, email terry@namebeam.ai.",cta:[["See pricing","#pricing"],["Try the free check","#check"]]},
-        {q:"How does it fit my stack?",a:"It sits alongside checkout rails like Google AP2 and the OpenAI and Stripe Agentic Commerce Protocol as an added signal, emitted as schema.org JSON-LD or a W3C Verifiable Credential.",cta:[["How it slots in","#how"]]},
+        {q:"How does it fit my stack?",a:"It sits alongside checkout rails like Google AP2 and the OpenAI and Stripe Agentic Commerce Protocol as an added signal, emitted as schema.org JSON-LD.",cta:[["How it slots in","#how"]]},
         {q:"Talk to a human",a:"Terry Carter runs the whole network. Reach out anytime.",cta:[["Contact","https://trunkline.money/contact/"]]}
       ]},
     
