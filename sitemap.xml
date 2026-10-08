@@ -17,4 +17,5 @@
   <url><loc>https://api.receiptsindex.com/proof/filing_room.html</loc><lastmod>2026-09-03</lastmod></url>
   <url><loc>https://api.receiptsindex.com/proof/receipts_api.html</loc><lastmod>2026-09-03</lastmod></url>
   <url><loc>https://api.receiptsindex.com/proof/makers_receipt.html</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://api.receiptsindex.com/.well-known/x402</loc><lastmod>2026-10-08</lastmod></url>
 </urlset>

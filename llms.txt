@@ -1,6 +1,6 @@
 # The Receipts API
 
-> The Receipts API (api.receiptsindex.com) is built to check the business behind a transaction and the claim behind a recommendation against primary public sources (GLEIF, RDAP, Certificate Transparency). It is not open for calls yet. For access or licensing, email terry@namebeam.ai. Verified as of a date, per a named source. Not a guarantee. Built for agentic commerce: everyone verifies the agent, the buyer, and the payment; the Receipts API verifies the merchant and the claim.
+> The Receipts API (api.receiptsindex.com) is built to check the business behind a transaction and the claim behind a recommendation against primary public sources (GLEIF, RDAP, Certificate Transparency). The paid data routes below use x402 (USDC on Base). For access or licensing, email terry@namebeam.ai. Verified as of a date, per a named source. Not a guarantee. Built for agentic commerce: everyone verifies the agent, the buyer, and the payment; the Receipts API verifies the merchant and the claim.
 
 The Receipts API is a leg of Carter Enterprise LLC (Sheridan, WY), the network behind Trunkline (crypto education, trunkline.money), Namebeam (AI visibility checks, namebeam.ai), The Receipts Index (thereceiptsindex.com), and The Filing Room (receiptsindex.com).
 
@@ -8,5 +8,15 @@ The Receipts API is a leg of Carter Enterprise LLC (Sheridan, WY), the network b
 
 - [The Receipts API](https://api.receiptsindex.com/): what it checks and how
 - [Know Your Merchant](https://api.receiptsindex.com/): the free merchant check
+- [Datasets](https://api.receiptsindex.com/datasets/): the machine-readable data shelf with provenance hashes
+
+## Paid data routes (x402)
+
+Each route answers HTTP 402 with its payment requirements. Pay in USDC on Base (eip155:8453), then repeat the request with the payment header. Facilitator: PayAI. Discovery file: https://api.receiptsindex.com/.well-known/x402 . Field list and prices: https://api.receiptsindex.com/v1/manifest
+
+- GET /v1/row/{row_id}: one dated record row, 0.27 USDC
+- GET /v1/day/{YYYY-MM-DD}: all rows for one UTC day, 1.81 USDC
+- GET /v1/corpus: the full record corpus, 540 USDC
+- GET /v1/feed/founding-partner: founding-partner feed, 200 USDC per month
 
 Real numbers. No hype. Receipts.
