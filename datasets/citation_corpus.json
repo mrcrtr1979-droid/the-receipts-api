@@ -7,9 +7,9 @@
   "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
   "temporalCoverage": "2026-07-29/2026-10-07",
   "dateModified": "2026-10-07",
-  "identifier": "sha256:12f63e518333e7cb",
+  "identifier": "sha256:2f75f6411539a724",
   "variableMeasured": ["date_utc","check_id","business","niche","market","engine","prompt_variant","run","business_mentioned","competitors_named","sources_cited","run_channel","flags"],
-  "distribution": { "@type": "DataDownload", "encodingFormat": "text/csv", "contentSize": "129114" },
+  "distribution": { "@type": "DataDownload", "encodingFormat": "text/csv", "contentSize": "2657916" },
   "isAccessibleForFree": false,
   "additionalProperty": [
     { "@type": "PropertyValue", "name": "rowCount", "value": 1874 },

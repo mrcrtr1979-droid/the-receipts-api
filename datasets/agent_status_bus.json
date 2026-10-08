@@ -7,9 +7,9 @@
   "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
   "temporalCoverage": "2026-07-21/2026-10-08",
   "dateModified": "2026-10-08",
-  "identifier": "sha256:6568c5f7a6f788c6",
+  "identifier": "sha256:2d2528624677fd5e",
   "variableMeasured": ["ts","agent","status","did","next","health","receipts"],
-  "distribution": { "@type": "DataDownload", "encodingFormat": "application/jsonlines", "contentSize": "119028" },
+  "distribution": { "@type": "DataDownload", "encodingFormat": "application/jsonlines", "contentSize": "328153" },
   "isAccessibleForFree": false,
   "additionalProperty": [
     { "@type": "PropertyValue", "name": "rowCount", "value": 721 },
