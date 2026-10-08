@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "name": "legacy_agent_corpus_2026",
   "description": "90+ days of agent execution/observation records from the pre-C32 architecture (retired ~2026-08-14 cutover) -- 10 tier definitions, 9 filtered execution-bus extracts, 10 named artifact files, 4 attributed status/returns records. Static, will not grow.",
-  "url": "https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026",
+  "url": "https://api.receiptsindex.com/datasets/legacy_agent_corpus_2026.json",
   "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
   "temporalCoverage": "2026-06-16/2026-08-23",
   "dateModified": "2026-08-27",
