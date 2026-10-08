@@ -2,18 +2,18 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "filing_room_ledger",
-  "description": "Entry-count telemetry for the live, monetized receiptsindex.com filing room -- a dated public ledger of official regulatory filings, charter applications, and disclosures.",
-  "url": "https://api.receiptsindex.com/datasets/filing_room_ledger",
+  "description": "Entry-count telemetry for the live receiptsindex.com filing room, a dated public ledger of official regulatory filings, charter applications, and disclosures. Note: rows 2026-09-11 to 2026-10-07 counted a script string and read 2 while the page held 66 entries; the count method was corrected 2026-10-08.",
+  "url": "https://api.receiptsindex.com/datasets/filing_room_ledger.json",
   "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
-  "temporalCoverage": "2026-08-15/2026-08-31",
-  "dateModified": "2026-09-03",
-  "identifier": "sha256:ccf52f23afb9d0e6",
+  "temporalCoverage": "2026-08-15/2026-10-07",
+  "dateModified": "2026-10-07",
+  "identifier": "sha256:28a0e9836dce8675",
   "variableMeasured": ["captured_utc","date","entry_count","wings","method","source"],
-  "distribution": { "@type": "DataDownload", "encodingFormat": "text/csv", "contentSize": "1195" },
+  "distribution": { "@type": "DataDownload", "encodingFormat": "text/csv", "contentSize": "9997" },
   "isAccessibleForFree": false,
   "additionalProperty": [
-    { "@type": "PropertyValue", "name": "rowCount", "value": 3 },
-    { "@type": "PropertyValue", "name": "refreshCadence", "value": "intended daily -- currently 3 captures across 16 days, flat at 66 entries and 16 wings, flagged" },
+    { "@type": "PropertyValue", "name": "rowCount", "value": 31 },
+    { "@type": "PropertyValue", "name": "refreshCadence", "value": "intended daily; 31 captures from 2026-08-15 to 2026-10-07" },
     { "@type": "PropertyValue", "name": "monetizableAs", "value": "product / lease candidate" }
   ]
 }
