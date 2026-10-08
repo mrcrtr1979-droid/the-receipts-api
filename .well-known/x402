@@ -1,0 +1,45 @@
+{
+  "x402Version": 2,
+  "name": "The Receipts API",
+  "description": "Dated AI-engine citation records, paid per call with x402 in USDC on Base.",
+  "provider": "Carter Enterprise LLC",
+  "contact": "terry@namebeam.ai",
+  "network": "eip155:8453",
+  "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "assetName": "USDC",
+  "payTo": "0x608260991Af56eFa1380E0e7bA7F3Ae239f5421a",
+  "scheme": "exact",
+  "facilitator": "https://facilitator.payai.network",
+  "manifest": "https://api.receiptsindex.com/v1/manifest",
+  "resources": [
+    {
+      "url": "https://api.receiptsindex.com/v1/row/{row_id}",
+      "method": "GET",
+      "description": "One dated record row.",
+      "price": "0.27",
+      "amount": "270000"
+    },
+    {
+      "url": "https://api.receiptsindex.com/v1/day/{YYYY-MM-DD}",
+      "method": "GET",
+      "description": "All record rows for one UTC day.",
+      "price": "1.81",
+      "amount": "1810000"
+    },
+    {
+      "url": "https://api.receiptsindex.com/v1/corpus",
+      "method": "GET",
+      "description": "The full record corpus.",
+      "price": "540",
+      "amount": "540000000"
+    },
+    {
+      "url": "https://api.receiptsindex.com/v1/feed/founding-partner",
+      "method": "GET",
+      "description": "Founding-partner feed, priced per month.",
+      "price": "200",
+      "amount": "200000000"
+    }
+  ],
+  "docs": "https://api.receiptsindex.com/llms.txt"
+}
