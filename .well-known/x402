@@ -1,6 +1,6 @@
 {
   "x402Version": 2,
-  "name": "The Receipts API",
+  "name": "Receipts Index",
   "description": "Dated AI-engine citation records, paid per call with x402 in USDC on Base.",
   "provider": "Carter Enterprise LLC",
   "contact": "terry@namebeam.ai",
@@ -36,7 +36,7 @@
     {
       "url": "https://api.receiptsindex.com/v1/feed/founding-partner",
       "method": "GET",
-      "description": "Founding-partner feed, priced per month.",
+      "description": "Founding-partner feed, priced per call.",
       "price": "200",
       "amount": "200000000"
     }
