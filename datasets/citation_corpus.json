@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "citation_corpus",
-  "description": "Dated AI-answer-engine citation telemetry: what 5 engines (ChatGPT, Claude, Perplexity, Gemini, Google AI) cite on buyer-intent prompts, per business/niche/market, run by run.",
+  "description": "Dated AI-answer-engine citation telemetry: what AI engines (ChatGPT, Claude, Perplexity, Gemini) cite on buyer-intent prompts, per business/niche/market, run by run; Google rows end 2026-11-04.",
   "url": "https://api.receiptsindex.com/datasets/citation_corpus.json",
   "creator": { "@type": "Organization", "name": "Carter Enterprise LLC" },
   "temporalCoverage": "2026-07-29/2026-10-07",
