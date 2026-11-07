@@ -19,4 +19,4 @@ Each route answers HTTP 402 with its payment requirements. Pay in USDC on Base (
 - GET /v1/corpus: the full record corpus, 540 USDC
 - GET /v1/feed/founding-partner: founding-partner feed, 200 USDC per month
 
-Paid rows are dated and name the engine asked and the sources it cited, when it cited any. Paid rows do not carry an artifact hash. Published Namebeam answers can be checked by hash at https://namebeam.ai/verify .
+Paid rows are dated and name the engine asked and the sources it cited, when it cited any. Paid rows do not carry an artifact hash. Namebeam answers dated 2026-08-08 to 2026-10-26 are listed by hash at https://namebeam.ai/verify; later answers are not yet listed there.
